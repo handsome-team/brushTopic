@@ -17,6 +17,8 @@
 			}
 		}
 	},
+	
+	
 	{
 		"path": "pages/search/search",
 		"style": {
@@ -33,6 +35,13 @@
 			"app-plus":{
 				"titleNView":false
 			}
+		}
+	},
+	{
+		"path": "pages/exam/main",
+		"style": {
+			"navigationBarTitleText": "正在考试ing"
+		
 		}
 	},
 	{
