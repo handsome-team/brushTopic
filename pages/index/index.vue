@@ -119,14 +119,11 @@
 		methods: {
 			// 加载更多
 			addMore() {
-				console.log(this.dataList.length)
-				console.log(this.indexFlag + 1)
 				if (this.dataList.length > this.indexFlag + 1) {
 					this.dataList[this.indexFlag + 1].forEach(item => {
 						this.dataList[0].push(item)
 					})
 					this.indexFlag += 1
-					// console.log(this.indexFlag += 1)
 				}
 			},
 			switchPage(myclass) {
@@ -147,7 +144,6 @@
 							newarr.push(res.data.slice(i, i + 3))
 						}
 						this.dataList = newarr
-						console.log(this.dataList)
 						// this.datapage = newarr.length
 					},
 				});
@@ -188,8 +184,6 @@
 			width: 100vw;
 			height: 60px;
 			margin: 50px 0px 0px 15px;
-
-			// background: red;
 			.searchBox {
 				width: 65vw;
 				height: 35px;
