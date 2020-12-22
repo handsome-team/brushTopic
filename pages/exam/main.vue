@@ -84,7 +84,7 @@
 					<view></view>
 				</view>
 				<view class="theme">
-					<image src="../../static/exam/all.png"></image>
+					<image src="../../static/practice/015.png"></image>
 					<view></view>
 				</view>
 			</view>
