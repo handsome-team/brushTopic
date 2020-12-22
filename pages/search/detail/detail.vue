@@ -20,7 +20,7 @@
 			return {
 				id: "",
 				index: 0,
-				answerList: [],
+				answerList: [], 
 				rightAnswer: '', // 正确答案
 				// 单选转换
 				radiotrans: {
@@ -49,7 +49,6 @@
 			},
 			// 详情数据
 			getDetailData() {
-				// console.log(this.answerList.type)
 				uni.request({
 					url: 'http://8.131.83.251:3981/problem/getdata',
 					method: 'POST',
@@ -72,10 +71,8 @@
 						} else {
 							let newanswer = rightanswer.map(item => {
 								return item = this.radiotrans[item]
-								console.log(item)
 							})
 							return this.rightAnswer = newanswer
-							console.log(newanswer)
 						}
 					}
 				})
