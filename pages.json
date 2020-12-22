@@ -18,6 +18,15 @@
 		}
 	},
 	{
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "登录",
+			"app-plus":{
+				"titleNView":false
+			}
+		}
+	},
+	{
 		"path": "pages/search/search",
 		"style": {
 			"navigationBarTitleText": "搜索",
@@ -30,6 +39,33 @@
 		"path": "pages/exam/exam",
 		"style": {
 			"navigationBarTitleText": "考试",
+			"app-plus":{
+				"titleNView":false
+			}
+		}
+	},
+	{
+		"path": "pages/mine/mean",
+		"style": {
+			"navigationBarTitleText": "我的资料",
+			"app-plus":{
+				"titleNView":false
+			}
+		}
+	},
+	{
+		"path": "pages/mine/modify",
+		"style": {
+			"navigationBarTitleText": "编辑资料",
+			"app-plus":{
+				"titleNView":false
+			}
+		}
+	},
+	{
+		"path": "pages/mine/collection",
+		"style": {
+			"navigationBarTitleText": "我的收藏",
 			"app-plus":{
 				"titleNView":false
 			}
