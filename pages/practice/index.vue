@@ -44,20 +44,18 @@
 </template>
 
 <script>
-	export default{
-		data() {
-			return {
-			};
-		},
-		methods: {
-			toSubject:function(myclass){
-				uni.navigateTo({
-					url:`./practice?myclass=${myclass}`
-				})
-			}
-			
-		}
-	}
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    toSubject: function(myclass) {
+      uni.navigateTo({
+        url: `./practice?myclass=${myclass}`
+      });
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">
