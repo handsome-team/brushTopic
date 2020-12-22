@@ -147,8 +147,6 @@
 							newarr.push(res.data.slice(i, i + 3))
 						}
 						this.dataList = newarr
-						console.log(this.dataList)
-						// this.datapage = newarr.length
 					},
 				});
 			},
@@ -234,7 +232,6 @@
 					text-align: center;
 					color: #FFFFFF;
 					line-height: 18px;
-					// padding: 10px;
 				}
 			}
 		}
@@ -268,10 +265,8 @@
 				height: 80%;
 				margin: 13px auto;
 				display: flex;
-				// justify-content: space-between;
 				flex-flow: wrap;
 
-				// background: #4CD964;
 				.icons {
 					width: 70px;
 					height: 60px;
@@ -299,7 +294,6 @@
 			.hotImg {
 				display: flex;
 
-				// justify-content: space-between;
 				image {
 					width: 160px;
 					height: 100px;
@@ -310,7 +304,6 @@
 
 		.hotNews {
 			width: 100%;
-			// background: #FE5407;
 			margin-top: 20px;
 
 			.addmore {
@@ -326,7 +319,6 @@
 			.newsbox {
 				width: 90%;
 				height: 100%;
-				// height: 100px;
 				padding: 10px;
 				margin: 10px auto;
 				background: #F8F8F8;

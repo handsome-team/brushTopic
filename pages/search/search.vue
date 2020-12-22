@@ -1,12 +1,11 @@
 <template>
 	<view class="searchContainer">
-
 		<view class="searchBoxCon">
 			<view class="searchBox">
 				<view class="searchImg">
 					<image src="../../static/search/sousuo.png" mode="" @click="onSearch"></image>
 				</view>
-				<input type="text" v-model="inpvalue" value="" class="inp" placeholder="搜索您想要的内容" @input="addHistory" />
+				<input type="text" v-model="inpvalue" value="" class="inp" placeholder="搜索您想要的内容" @input="changeInput" />
 			</view>
 			<view class='searchbtn'>
 				<text @click='onSearch'>搜索</text>
@@ -21,15 +20,7 @@
 					<p class='option'>{{val.title}}</p>
 				</view>
 			</view>
-			<!-- 	<view class="historyBox" v-show="!isShow">
-				<view class="historyDisplay">
-					<p class='clear'>最近搜索:</p>
-					<p class="clear" @click='clearHistory'>清空</p>
-				</view>
-				<view v-for="item in searchHistoryList">
-					<text>{{item}}</text>
-				</view>
-			</view> -->
+		
 		</view>
 	</view>
 </template>
@@ -38,8 +29,8 @@
 	export default {
 		data() {
 			return {
-				inpvalue: '',
-				dataList: [],
+				inpvalue: '', //输入框value
+				dataList: [], //数据列表
 				searchHistoryList: [], //搜索历史
 				isShow: false
 			};
@@ -64,8 +55,8 @@
 			clearHistory() {
 				this.searchHistoryList = []
 			},
-			//历史记录
-			addHistory() {
+			//输入框为空不显示内容
+			changeInput() {
 				if (this.inpvalue == '') {
 					this.isShow = !this.isShow
 				}
@@ -179,33 +170,6 @@
 		.contentContainer {
 			width: 100vw;
 			height: 100%;
-
-			.historyBox {
-				width: 90%;
-				height: 100%;
-
-				.historyDisplay {
-					display: flex;
-					justify-content: space-between;
-				}
-
-				.clear {
-					// width: 30px;
-					border-radius: 25%;
-					margin-left: 10px;
-				}
-
-				text {
-					padding: 10px 22px;
-					font-size: 14px;
-				}
-
-				p {
-					padding: 10px;
-					font-size: 14px;
-				}
-			}
-
 			.contentshadow {
 				width: 100%;
 				margin-top: 10px;
@@ -224,7 +188,6 @@
 			.txt {
 				padding: 20px 0px 0px 10px;
 				font-size: 14px;
-				// float: left;
 			}
 
 			.radio {
