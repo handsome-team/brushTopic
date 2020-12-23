@@ -2,43 +2,55 @@
 	"pages": [{
 		"path": "pages/index/index",
 		"style": {
-			"navigationBarTitleText": "首页",
-			"app-plus":{
-				"titleNView":false
-			}
+			"navigationBarTitleText": "首页"
 		}
 	},
 	{
 		"path": "pages/practice/practice",
 		"style": {
-			"navigationBarTitleText": "练习"
-		}
-	},
-	
-	
-	{
-		"path": "pages/search/search",
-		"style": {
-			"navigationBarTitleText": "搜索",
+			"navigationBarTitleText": "练习",
 			"app-plus":{
 				"titleNView":false
 			}
+		}
+	},
+	{
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "登录",
+			"app-plus":{
+				"titleNView":false
+			}
+		}
+	},
+	{
+		"path": "pages/search/search",
+		"style": {
+			"navigationBarTitleText": "搜索"
+			
 		}
 	},
 	{
 		"path": "pages/exam/exam",
 		"style": {
-			"navigationBarTitleText": "考试",
+			"navigationBarTitleText": "考试"
+			
+		}
+	},
+	{
+		"path": "pages/mine/mean",
+		"style": {
+			"navigationBarTitleText": "我的资料",
 			"app-plus":{
 				"titleNView":false
 			}
 		}
 	},
 	{
-		"path": "pages/exam/main",
+		"path": "pages/mine/modify",
 		"style": {
-			"navigationBarTitleText": "正在考试ing"
-		
+			"navigationBarTitleText": "我的"
+			
 		}
 	},
 	{
@@ -49,18 +61,21 @@
 		}
 	},
 	{
-		"path": "pages/mine/mine",
+		"path": "pages/mine/collection",
 		"style": {
-			"navigationBarTitleText": "我的",
+			"navigationBarTitleText": "我的收藏",
 			"app-plus":{
 				"titleNView":false
 			}
 		}
 	},
 	{
-		"path": "pages/practice/index",
+		"path": "pages/mine/mine",
 		"style": {
-			"navigationBarTitleText": "练习"
+			"navigationBarTitleText": "我的",
+			"app-plus":{
+				"titleNView":false
+			}
 		}
 	}],
 	"tabBar": {
@@ -70,38 +85,38 @@
 	    "backgroundColor": "#ffffff",
 	    "list": [{
 	        "pagePath": "pages/index/index",
-	        // "iconPath": "static/image/icon_component.png",
-	        // "selectedIconPath": "static/image/icon_component_HL.png",
+	        "iconPath": "static/tabbar/shouye.png",
+	        "selectedIconPath": "static/tabbar/home-high.png",
 	        "text": "首页"
 	    }, {
 	        "pagePath": "pages/practice/index",
-	        // "iconPath": "static/image/icon_API.png",
-	        // "selectedIconPath": "static/image/icon_API_HL.png",
+	        "iconPath": "static/tabbar/wodedingdan.png",
+	        "selectedIconPath": "static/tabbar/wodedingdan1.png",
 	        "text": "练习"
 	    },
 		{
 		    "pagePath": "pages/search/search",
-		    // "iconPath": "static/image/icon_API.png",
-		    // "selectedIconPath": "static/image/icon_API_HL.png",
+		    "iconPath": "static/tabbar/sousuo.png",
+		    "selectedIconPath": "static/tabbar/xingtaiduICON_sousuo--.png",
 		    "text": "搜索"
 		},
 		{
 		    "pagePath": "pages/exam/exam",
-		    // "iconPath": "static/image/icon_API.png",
-		    // "selectedIconPath": "static/image/icon_API_HL.png",
+		    "iconPath": "static/tabbar/yijianfankui.png",
+		    "selectedIconPath": "static/tabbar/yijianfankui1.png",
 		    "text": "考试"
 		},
 		{
 		    "pagePath": "pages/mine/mine",
-		    // "iconPath": "static/image/icon_API.png",
-		    // "selectedIconPath": "static/image/icon_API_HL.png",
+		    "iconPath": "static/tabbar/wodejuhuasuan.png",
+		    "selectedIconPath": "static/tabbar/wodedangxuan.png",
 		    "text": "我的"
 		}]
 	},
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#FE5407",
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
 			"background": "#efeff4"

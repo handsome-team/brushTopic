@@ -47,9 +47,9 @@ export default {
 }
 .timing{
 		width: 30%;
-	    height: 18%;
+	    height: 15%;
 		// background: #0000FF;
-		margin: 0 auto;
+		margin: 10px auto;
 		image{
 			width: 100%;
 			height: 100%;

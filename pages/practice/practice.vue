@@ -71,7 +71,7 @@
 
 
 			</view>
-			<view>
+			<view class="btnBox">
 				<text @click="toprev">上一题</text>
 				<text @click="tonext">下一题</text>
 			</view>
@@ -96,6 +96,9 @@
 				</view>
 
 			</view>
+		</view>
+		<view v-else style="padding: 10px;">
+			暂无数据
 		</view>
 
 	</view>
@@ -147,7 +150,7 @@
 			toprev() {
 				this.tip = false
 				if (this.index >= 1) {
-					var nextid = this.practiceList[this.index + 1].id
+					var nextid = this.practiceList[this.index - 1].id
 					if (this.shouList.find((item) => item == nextid)) {
 						this.isShow = true
 					} else {
@@ -357,14 +360,14 @@
 						id: id
 					},
 					success: (res) => {
-						
+
 						let data = res.data.data
 						let newdata = data.map(item => {
 							item.options = JSON.parse(item.options)
 							return item
 						})
 						this.practiceList = [...this.practiceList, ...newdata]
-						
+
 					}
 				})
 			},
@@ -481,6 +484,27 @@
 			}
 		}
 
+		.btnBox {
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			color: #FE5407;
+			overflow: hidden;
+			position: fixed;
+			bottom: 50px;
+			left: 0px;
+
+			text {
+				width: 50%;
+				height: 50px;
+				display: inline-block;
+				text-align: center;
+				line-height: 50px;
+				font-size: 14px;
+				border-radius: 5px;
+			}
+		}
+
 		.topic-operation {
 			width: 96%;
 			height: 50px;
@@ -490,6 +514,7 @@
 			left: 2%;
 			background-color: #fff;
 			box-shadow: 0px 4px 20px -6px #C0C0C0;
+
 			.collect {
 				width: 20%;
 				height: 30px;
