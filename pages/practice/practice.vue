@@ -137,6 +137,14 @@
 			};
 		},
 		onLoad(option) {
+			const _this = this
+			uni.getStorage({
+				key:'admin',
+				success:function(res){
+					_this.shouList = JSON.parse(res.data.sign)
+				}
+				
+			})
 			if (option.myclass) {
 				this.getData(1, option.myclass, '')
 			} else {
@@ -234,7 +242,14 @@
 					})
 					this.userAnswer = ''
 					if (this.index < this.practiceList.length - 1) {
+						var nextid = this.practiceList[this.index + 1].id
+						if (this.shouList.find((item) => item == nextid)) {
+							this.isShow = true
+						} else {
+							this.isShow = false
+						}
 						this.index += 1
+						
 					}
 					if (this.index == this.practiceList.length - 1) {
 						this.getData(Math.ceil(this.practiceList.length / 10) + 1)
@@ -293,6 +308,12 @@
 					});
 					this.userAnswer = ''
 					if (this.index < this.practiceList.length - 1) {
+						var nextid = this.practiceList[this.index + 1].id
+						if (this.shouList.find((item) => item == nextid)) {
+							this.isShow = true
+						} else {
+							this.isShow = false
+						}
 						this.index += 1
 						this.userAnswer = ''
 					}
@@ -316,35 +337,65 @@
 			},
 			// 收藏
 			tocollect(id) {
-				this.isShow = !this.isShow
-				let type;
-				if (this.isShow) {
-					type = 'add'
-					this.shouList.push(id)
-				} else {
-					type = 'delete'
-					this.shouList.filter((item => id != item))
-				}
-				uni.request({
-					url: 'http://8.131.83.251:3981/collection',
-					data: {
-						id: id,
-						userid: 112,
-						type: type
-					},
-					method: 'POST',
-					success: (res) => {
-						console.log(res.data)
-						let {
-							code,
-							msg
-						} = res.data
-						if (code == 200) {
-							uni.showToast({
-								title: msg,
-								icon: 'none'
-							})
+				const _this = this;
+				uni.getStorage({
+					key: 'admin',
+					success: function(res) {
+						_this.isShow = !_this.isShow
+						let admin = res.data
+						let data = JSON.parse(res.data.sign)
+						let userid = res.data.userid
+						_this.shouList = data
+						let type;
+						if (_this.isShow) {
+							type = 'add'
+							_this.shouList.push(id)
+							
+						} else {
+							type = 'delete'
+							_this.shouList =_this.shouList.filter((item => id != item))
 						}
+						console.log(_this.shouList)
+						admin.sign=JSON.stringify(_this.shouList)
+						uni.setStorage({
+							key:'admin',
+							data:admin
+						})
+						uni.request({
+							url: 'http://8.131.83.251:3981/collection',
+							data: {
+								id: id,
+								userid: userid,
+								type: type
+							},
+							method: 'POST',
+							success: (res) => {
+								let {
+									code,
+									msg
+								} = res.data
+								if (code == 200) {
+									uni.showToast({
+										title: msg,
+										icon: 'none'
+									})
+								}
+							}
+						})
+					},
+					fail: function() {
+						uni.showModal({
+						    title: '您还没有登录，是否登录？',
+						    success: function (res) {
+						        if (res.confirm) {
+						            uni.navigateTo({
+						            	url:'/pages/login/login'
+						            })
+						        } else if (res.cancel) {
+						            return false
+						        }
+						    }
+						});
 					}
 				})
 			},
@@ -367,6 +418,12 @@
 							return item
 						})
 						this.practiceList = [...this.practiceList, ...newdata]
+						var id = this.practiceList[this.index].id
+						if (this.shouList.find((item) => item == id)) {
+							this.isShow = true
+						} else {
+							this.isShow = false
+						}
 
 					}
 				})
