@@ -148,7 +148,6 @@ export default {
       }
     },
     switchPage(myclass) {
-      console.log(myclass);
       uni.navigateTo({
         url: `/pages/practice/practice?myclass=${myclass}`
       });
@@ -203,7 +202,7 @@ export default {
   .searchBoxCon {
     width: 100vw;
     height: 60px;
-    margin: 50px 0px 0px 15px;
+    margin: 10px 0px 0px 15px;
     .searchBox {
       width: 65vw;
       height: 35px;
@@ -215,7 +214,7 @@ export default {
       .searchImg {
         width: 6%;
         height: 45%;
-        margin: 5px 17px;
+        margin: 7px 17px;
         float: left;
 
         image {

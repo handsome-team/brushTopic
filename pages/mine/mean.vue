@@ -1,7 +1,6 @@
 <template>
 	<view class="mean-box">
-		 <uni-nav-bar @clickLeft="back" status-bar=true  left-text="返回" title="我的资料" backgroundColor="#FE5407"
-		   color="#ffffff" ></uni-nav-bar>
+		
 		<view class="mean-list">
 			<view class="icon-li">
 					<text class="mean-left">头像</text>
