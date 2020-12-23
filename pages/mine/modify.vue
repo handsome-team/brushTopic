@@ -1,7 +1,6 @@
 <template>
 	<view class="modify-box">
-		<uni-nav-bar @clickLeft="back" status-bar=true  left-text="返回" title="编辑资料" backgroundColor="#FE5407"
-		  color="#ffffff" ></uni-nav-bar>
+		
 			<view class="mean-list">
 				<view class="mean-li">
 					<input type="text" v-model="ruleForm.username" placeholder="请输入昵称" />

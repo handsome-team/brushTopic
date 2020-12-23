@@ -1,7 +1,5 @@
 <template>
 	<view class="collection-box">
-		<uni-nav-bar @clickLeft="back" status-bar=true  left-text="返回" title="我的收藏" backgroundColor="#FE5407"
-		  color="#ffffff" ></uni-nav-bar>
 			<view class="collection-navbox">{{dataList.length == 0?`暂无数据`:`收藏题数：${dataList.length}`}}</view>
 			<view class="contentshadow" v-for="item in dataList">
 				<view class="radio"></view>

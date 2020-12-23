@@ -2,8 +2,6 @@
 	<view class="content-box">
 		<!-- 登录页面 -->
 		<view v-if='isShow' class="login-box">
-		<uni-nav-bar status-bar=true  title="登录" backgroundColor="#FE5407"
-		   color="#ffffff" ></uni-nav-bar>
 			<view class="input-box">
 				<view class="image-box">
 					<image src="../../static/mine/icon.jpg" mode=""></image>
@@ -23,8 +21,6 @@
 		</view>
 		<!-- 注册页面 -->
 		<view v-else="isShow" class="register-box">
-			<uni-nav-bar status-bar=true  title="注册" backgroundColor="#FE5407"
-			   color="#ffffff" ></uni-nav-bar>
 			<view class="input-box">
 				<view class="image-box">
 					<image src="../../static/mine/sheep.jpg" mode=""></image>

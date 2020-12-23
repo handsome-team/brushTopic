@@ -1,7 +1,6 @@
 <template>
 	<view class="mine-box">
-		 <uni-nav-bar status-bar=true  title="我的" backgroundColor="#FE5407"
-		    color="#ffffff" ></uni-nav-bar>
+		
 		<view class="mine-mean">
 			<view class="image-box">
 				<image  v-if='!this.admin' src="../../static/mine/icon.jpg" mode="" />
