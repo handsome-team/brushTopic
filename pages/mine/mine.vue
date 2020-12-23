@@ -129,9 +129,15 @@
 			},
 			// 去我的收藏
 			toCollection(){
-				uni.navigateTo({
-					url:"./collection"
-				})
+				if(!this.admin){
+					uni.showToast({
+						title:'请先登录'
+					})
+				}else{
+					uni.navigateTo({
+						url:"./collection"
+					})
+				}
 			},
 			//去我的资料 
 			toMean(){
@@ -231,7 +237,7 @@
 			left: 10%;
 			image{
 				width: 100%;
-				height: 120%;
+				height: 100%;
 			}
 		}
 		.font-box{

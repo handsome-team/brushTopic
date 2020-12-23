@@ -5,7 +5,7 @@
 		<view class="mean-list">
 			<view class="icon-li">
 					<text class="mean-left">头像</text>
-					<image :src="ruleForm.portrait" mode=""></image>
+					<image :src="ruleForm.portrait" mode="" @click="chooseImage"></image>
 				</view>
 				<view class="mean-li">
 					<text class="mean-left">昵称</text>
@@ -62,6 +62,39 @@
 				uni.switchTab({
 					url:"./mine"
 				})
+			},
+			// 修改头像
+			chooseImage() {
+				const _this = this;
+				const admin = uni.getStorageSync('admin');
+				const {userid,portrait} = admin;
+				_this.ruleForm.portrait = portrait
+			  uni.chooseImage({ //选择图片
+			    count: 1,
+			    sizeType: ["compressed"],
+			    success(res) {
+			      var imgsFile = res.tempFilePaths[0]; //获取图片的临时资源
+			      uni.uploadFile({ //上传代码
+			        url: "http://8.131.83.251:3981/users/herad", //本地 node.js 服务器地址
+			        filePath: imgsFile,
+			        formData: {
+			          userid: userid,
+			          qianurl: portrait
+			        },
+			        name: "file", //这个东西有点类似与 form 表单中的 name 值 在后面也需要这个
+			        success: function(res) {
+								let newAdmin = JSON.parse(JSON.stringify(uni.getStorageSync('admin')))
+								const {imgurl,msg} = JSON.parse(res.data)
+								uni.clearStorage('admin')
+								newAdmin.portrait = imgurl;
+								uni.setStorageSync('admin',newAdmin)
+								uni.showToast({
+									title:msg
+								})
+			        }
+			      })
+			    }
+			  })
 			},
 			modify(){
 				const admin = uni.getStorageSync('admin')

@@ -85,7 +85,7 @@
 							rightCount:this.ruleForm.rightCount  // 正确次数
 						},
 						success:(data)=>{
-							console.log(this)
+							// console.log(this)
 							if(data.data.code == 200){
 								let newAdmin = JSON.parse(JSON.stringify(uni.getStorageSync('admin')))
 								newAdmin.nickname = this.ruleForm.username
