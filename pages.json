@@ -61,6 +61,13 @@
 		}
 	},
 	{
+		"path": "pages/exam/main",
+		"style": {
+			"navigationBarTitleText": "考试页面"
+		
+		}
+	},
+	{
 		"path": "pages/mine/collection",
 		"style": {
 			"navigationBarTitleText": "我的收藏",

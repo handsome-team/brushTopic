@@ -5,17 +5,17 @@
 			<!-- 倒计时 -->
 			<view class="countDown">
 				倒计时:
-				<uni-countdown :show-day="false" :minute="0" :second="5" :reset="false" @timeup="handleTime"></uni-countdown>
+				<uni-countdown :show-day="false" :minute="45" :second="0" :reset="false" @timeup="handleTime"></uni-countdown>
 			</view>
 
 			<!-- 单选 -->
 			<view class="singleChoose">
-				<view v-if="problemList[index].type == 'radio'">
+				<view v-if="problemList[index].type == 'radio'" :key="problemList[index].id">
 					单选:{{ index + 1 }}、 {{ problemList[index].name }}
 					<radio-group @change="radioChange($event, problemList[index].answer, 'radio')">
-						<label class="uni-list-cell uni-list-cell-pd" v-for="(item, forIndex) in problemList[index].options" :key="item.title">
+						<label class="uni-list-cell uni-list-cell-pd" v-for="(item, forIndex) in problemList[index].options" :key="forIndex">
 							<view>
-								<radio :value="`${forIndex}`" />
+								<radio :disabled="historyList[index] !== null" :value="`${forIndex}`" :checked="forIndex == historyList[index]" />
 								{{ item.title }}
 							</view>
 							<br />
@@ -25,67 +25,65 @@
 			</view>
 
 			<!-- 判断 -->
-			<view v-if="problemList[index].type == 'judge'">
+			<view v-if="problemList[index].type == 'judge'" :key="problemList[index].id">
 				判断:{{ index + 1 }}、 {{ problemList[index].name }}
 				<radio-group @change="radioChange($event, problemList[index].answer, 'judge')">
 					<label class="uni-list-cell uni-list-cell-pd">
 						<view>
-							<radio :value="`${true}`" />
+							<radio :disabled="historyList[index] !== null" value="true" :checked="'true' == historyList[index]" />
 							<text>正确</text>
 						</view>
 					</label>
 					<label class="uni-list-cell uni-list-cell-pd">
 						<view>
-							<radio :value="`${false}`" />
+							<radio :disabled="historyList[index] !== null" value="false" :checked="'false' == historyList[index]" />
 							<text>错误</text>
 						</view>
 					</label>
 				</radio-group>
 			</view>
+
 			<!-- 多选 -->
 			<view v-if="problemList[index].type == 'checkbox'">
 				多选:{{ index + 1 }}、{{ problemList[index].name }}
 				<checkbox-group @change="checkboxChange">
 					<label class="uni-list-cell uni-list-cell-pd" v-for="(item, forIndex) in problemList[index].options" :key="item.title">
 						<view>
-							<checkbox :value="`${forIndex}`" />
-							{{ item.title }}
+							<checkbox :disabled="problemTrueFalse[index] !== null" :value="`${forIndex}`" :checked="historyList[index].includes(forIndex)" />
+							<text>{{ item.title }}</text>
 						</view>
 					</label>
 				</checkbox-group>
 				<button type="default" @click="toSubmit(problemList[index].answer, 'checkbox')">确认答案</button>
 			</view>
 			<!-- 答案提示 -->
-			<view class="" v-if="isShow">
+			<view class="" v-if="problemTrueFalse[index] !== null">
 				<view>
-					<span>正确答案✓:{{ right }}</span>
+					<span>正确答案✓:{{ getVal(JSON.parse(problemList[index].answer), problemList[index].type) }}</span>
 				</view>
 				<br />
 				<view>
-					<span>您的选择×:{{ wrong }}</span>
+					<span>您的选择×:{{ getVal(historyList[index], problemList[index].type) }}</span>
 				</view>
+				<view class="">{{ problemList[index].explain }}</view>
 			</view>
 			<!-- 分页 -->
-			<view class="">
-				<view class=""><uni-pagination show-icon="true" :total="problemList.length" :current="index + 1" pageSize="1" @change="handleChange"></uni-pagination></view>
+			<view class="paging">
+				<view ><uni-pagination show-icon="true" :total="problemList.length" :current="index + 1" pageSize="1" @change="handleChange"></uni-pagination></view>
 			</view>
 			<!-- 收藏  -->
 			<view class="topic-operation">
 				<view class="right">
 					<image src="../../static/exam/right.png"></image>
-					<view>{{rightNum}}</view>
+					<view>{{ rightNum }}</view>
 				</view>
 				<view class="error">
 					<image src="../../static/exam/wrong.png"></image>
-					<view>{{errorNum}}</view>
+					<view>{{ errorNum }}</view>
 				</view>
 				<!-- 交卷按钮 -->
-				<view>
-					<button type="default" @click="jiaojuan">交卷</button>
-				</view>
+				<view ><button type="default" @click="jiaojuan"class="handIn">交卷</button></view>
 			</view>
-			
-			
 		</view>
 	</view>
 </template>
@@ -122,19 +120,32 @@ export default {
 			// 倒计时
 			minute: 0,
 			reset: false,
-			checkboxs: []
+			checkboxs: [],
+			historyList:[],
+			problemListIndex: []
+
 		};
 	},
-	onload() {
+	onLoad() {
 		//我的项目中只赋值一次, 所以直接设为true了
 		this.reset = !this.reset;
 		//如果还要设置天, 时, 秒, 在上面声明绑定后, 在这里赋值即可
 		this.minute = 30;
-	},
-	mounted() {
-		this.getData(1);
+		this.rand()
+		this.getData();
 	},
 	methods: {
+		rand: function() {
+		    var count = 200;
+		    var a = new Array();
+		    for (var i = 0; i < count; i++) {
+		     a[i] = i + 1;
+		    }
+		    a.sort(function() {
+		     return 0.5 - Math.random();
+		    });
+		    this.problemListIndex = a
+		   },
 		// 多选 确认答案
 		toSubmit: function(answer, type) {
 			const checkboxs = this.checkboxs;
@@ -149,6 +160,7 @@ export default {
 					title: '回答错误',
 					icon: 'none'
 				});
+				this.problemTrueFalse.splice(this.index,1, false)
 				this.isShow = true;
 				//如果答错了 就往错误的地方加1
 				this.errorNum +=1
@@ -159,6 +171,7 @@ export default {
 				uni.showToast({
 					title: '回答正确'
 				});
+				this.problemTrueFalse.splice(this.index,1, true)
 				this.isShow = false;
 				this.rightNum +=1
 				if (this.index < this.problemList.length - 1) {
@@ -166,7 +179,7 @@ export default {
 				}
 				if (this.index < 99) {
 					if (this.index == this.problemList.length - 1) {
-						this.getData(Math.ceil(this.problemList.length / 10) + 1);
+						this.getData();
 					}
 				}
 			} else {
@@ -175,6 +188,7 @@ export default {
 					title: '回答错误',
 					icon: 'none'
 				});
+				this.problemTrueFalse.splice(this.index,1, false)
 				this.isShow = true;
 				this.errorNum +=1
 				this.right = this.getVal(newanswer, type);
@@ -183,13 +197,14 @@ export default {
 		},
 		getData: function(getEvl) {
 			const _this = this;
+			let res = this.problemListIndex.slice(this.index,this.index+10)
+			
 			// 加载完成请求数据
 			uni.request({
-				url: `${baseURL}/problem/getdata`,
+				url: `${baseURL}/problem/test`,
 				method: 'POST',
 				data: {
-					page: getEvl,
-					num: 10
+					data: JSON.stringify(res)
 				},
 				// 成功时的回调
 				success(res) {
@@ -197,9 +212,15 @@ export default {
 					if (code == 200) {
 						var newdata = data.map(item => {
 							_this.problemTrueFalse.push(null)
+							if(item.type =="checkbox"){
+								_this.historyList.push([])
+							}else{
+								_this.historyList.push(null)
+							}
 							item.options = JSON.parse(item.options);
+
 							return item;
-							
+
 						});
 						// 将后端返回的数据赋值给vue实例上的参数
 						_this.problemList = [..._this.problemList, ...newdata];
@@ -221,19 +242,22 @@ export default {
 				}
 			});
 		},
+		// 单选
 		radioChange: function(e, answer, type) {
 			// console.log(111);
 			// console.log(e, answer, type);
 			const value = e.target.value;
+			this.historyList.splice(this.index,1,value)
 			if (value == answer) {
 				this.rightNum +=1
 				this.isShow = false;
+				this.problemTrueFalse.splice(this.index,1, true)
 				if (this.index < this.problemList.length - 1) {
 					this.index += 1;
 				}
 				if (this.index < 99) {
 					if (this.index == this.problemList.length - 1) {
-						this.getData(Math.ceil(this.problemList.length / 10) + 1);
+						this.getData();
 					}
 				}
 			} else {
@@ -241,6 +265,7 @@ export default {
 				this.errorNum +=1
 				this.right = this.getVal(answer, type);
 				this.wrong = this.getVal(value, type);
+				this.problemTrueFalse.splice(this.index,1, false)
 			}
 		},
 		handleChange: function(e) {
@@ -254,7 +279,7 @@ export default {
 			}
 			if (this.index < 99) {
 				if (this.index == this.problemList.length - 1) {
-					this.getData(Math.ceil(this.problemList.length / 10) + 1);
+					this.getData();
 				}
 			}
 		},
@@ -291,6 +316,8 @@ export default {
 			this.checkboxs = value.map(item => {
 				return +item;
 			});
+			console.log(this.checkboxs)
+			this.historyList.splice(this.index,1,this.checkboxs)
 		},
 		// 交卷
 		jiaojuan:function(){
@@ -311,6 +338,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+	*{
+		margin: 0;
+		padding: 0;
+	}
 .countDown {
 	width: 100vw;
 	height: 100%vh;
@@ -325,27 +356,34 @@ export default {
 	margin-top: 20px;
 }
 .topic-operation {
-	width: 96%;
-	height: 50px;
+	width: 100%;
+	height: 30px;
 	margin: 0 auto;
 	position: fixed;
-	bottom: 0px;
-	left: 2%;
-
+	bottom: 20px;
+	.handIn{
+		width:25% ;
+		height: 100%;
+		position: relative;
+		line-height: 36px;
+		left: 20%;
+		display: block;
+		outline: none;
+		background-color: #FE5407;
+		color: white;
+	}
 	.collect {
 		width: 20%;
 		height: 30px;
 		float: left;
 		margin-left: 20px;
 		margin-top: 10px;
-
-		image {
+			image {
 			width: 40%;
 			height: 100%;
 			float: left;
 		}
-
-		view {
+	view {
 			float: left;
 			font-size: 14px;
 			padding-top: 5px;
@@ -357,7 +395,6 @@ export default {
 		height: 30px;
 		float: left;
 		margin-left: 20px;
-		margin-top: 10px;
 
 		image {
 			width: 40%;
@@ -377,7 +414,6 @@ export default {
 		height: 30px;
 		float: left;
 		margin-left: 20px;
-		margin-top: 10px;
 
 		image {
 			width: 40%;
@@ -412,4 +448,11 @@ export default {
 		}
 	}
 }
+.paging{
+	width: 100%;
+	height: 20%;
+	position: fixed;
+	bottom: -20px;
+}
+
 </style>
