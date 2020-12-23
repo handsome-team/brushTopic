@@ -42,6 +42,13 @@
 		}
 	},
 	{
+		"path": "pages/exam/answer",
+		"style": {
+			"navigationBarTitleText": "成绩单"
+		
+		}
+	},
+	{
 		"path": "pages/mine/mine",
 		"style": {
 			"navigationBarTitleText": "我的",

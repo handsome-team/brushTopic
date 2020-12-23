@@ -5,7 +5,7 @@
 			<!-- 倒计时 -->
 			<view class="countDown">
 				倒计时:
-				<uni-countdown :show-day="false" :minute="45" :second="0" :reset="false" @timeup="handleTime"></uni-countdown>
+				<uni-countdown :show-day="false" :minute="0" :second="5" :reset="false" @timeup="handleTime"></uni-countdown>
 			</view>
 
 			<!-- 单选 -->
@@ -71,23 +71,21 @@
 			</view>
 			<!-- 收藏  -->
 			<view class="topic-operation">
-				<view class="collect">
-					<image src="../../static/exam/collection.png"></image>
-					<view>收藏</view>
-				</view>
 				<view class="right">
 					<image src="../../static/exam/right.png"></image>
-					<view></view>
+					<view>{{rightNum}}</view>
 				</view>
 				<view class="error">
 					<image src="../../static/exam/wrong.png"></image>
-					<view></view>
+					<view>{{errorNum}}</view>
 				</view>
-				<view class="theme">
-					<image src="../../static/exam/all.png"></image>
-					<view></view>
+				<!-- 交卷按钮 -->
+				<view>
+					<button type="default" @click="jiaojuan">交卷</button>
 				</view>
 			</view>
+			
+			
 		</view>
 	</view>
 </template>
@@ -99,6 +97,9 @@ export default {
 	components: { uniPagination, uniCountdown },
 	data() {
 		return {
+			problemTrueFalse:[],//选择题目的对错
+			rightNum:0 ,//正确的个数
+			errorNum:0, //错误的个数
 			problemList: [],
 			// 从第0项开始渲染
 			index: 0,
@@ -149,6 +150,8 @@ export default {
 					icon: 'none'
 				});
 				this.isShow = true;
+				//如果答错了 就往错误的地方加1
+				this.errorNum +=1
 				this.right = this.getVal(newanswer, type);
 				this.wrong = this.getVal(checkboxs, type);
 			} else if (newList.length == newanswer.length) {
@@ -157,6 +160,7 @@ export default {
 					title: '回答正确'
 				});
 				this.isShow = false;
+				this.rightNum +=1
 				if (this.index < this.problemList.length - 1) {
 					this.index += 1;
 				}
@@ -172,6 +176,7 @@ export default {
 					icon: 'none'
 				});
 				this.isShow = true;
+				this.errorNum +=1
 				this.right = this.getVal(newanswer, type);
 				this.wrong = this.getVal(checkboxs, type);
 			}
@@ -191,8 +196,10 @@ export default {
 					const { data, code, msg } = res.data;
 					if (code == 200) {
 						var newdata = data.map(item => {
+							_this.problemTrueFalse.push(null)
 							item.options = JSON.parse(item.options);
 							return item;
+							
 						});
 						// 将后端返回的数据赋值给vue实例上的参数
 						_this.problemList = [..._this.problemList, ...newdata];
@@ -219,6 +226,7 @@ export default {
 			// console.log(e, answer, type);
 			const value = e.target.value;
 			if (value == answer) {
+				this.rightNum +=1
 				this.isShow = false;
 				if (this.index < this.problemList.length - 1) {
 					this.index += 1;
@@ -230,6 +238,7 @@ export default {
 				}
 			} else {
 				this.isShow = true;
+				this.errorNum +=1
 				this.right = this.getVal(answer, type);
 				this.wrong = this.getVal(value, type);
 			}
@@ -254,9 +263,9 @@ export default {
 				title: '时间到!',
 				icon: 'none'
 			});
-			uni.reLaunch({
-				url: '/pages/exam/exam'
-			});
+			uni.redirectTo({
+				url:`/pages/exam/answer?right=${this.rightNum}&error=${this.errorNum}`
+			})
 		},
 		// 转换选项标识
 		getVal: function(a, type) {
@@ -282,6 +291,21 @@ export default {
 			this.checkboxs = value.map(item => {
 				return +item;
 			});
+		},
+		// 交卷
+		jiaojuan:function(){
+			const _this = this
+			let allLength = this.rightNum+this.errorNum;
+			uni.showModal({
+				title:`您还有${100-allLength}题未答,是否确认交卷?`,
+				success(res) {
+					if(res.confirm){
+						uni.redirectTo({
+							url:`/pages/exam/answer?right=${_this.rightNum}&error=${_this.errorNum}`
+						})
+					}else if (res.cancel){}
+				}
+			})
 		}
 	}
 };
