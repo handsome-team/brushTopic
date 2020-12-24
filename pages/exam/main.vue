@@ -5,7 +5,7 @@
 			<!-- 倒计时 -->
 			<view class="countDown">
 				倒计时:
-				<uni-countdown :show-day="false" :minute="0" :second="5" :reset="false" @timeup="handleTime"></uni-countdown>
+				<uni-countdown :show-day="false" :minute="0" :second="30" :reset="false" @timeup="handleTime"></uni-countdown>
 			</view>
 
 			<!-- 单选 -->
