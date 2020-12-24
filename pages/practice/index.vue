@@ -61,25 +61,25 @@ export default {
 <style scoped lang="scss">
 	.sortBox{
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		.sortItem{
-			width: 30%;
-			height: 35px;
+			width: 40%;
+			height: 8vh;
 			float: left;
-			margin: 10px 0px 10px 47px;
+			margin: 20px 0px 10px 30px;
 			border-radius: 5px;
 			image{
-				width: 20%;
-				height: 80%;
+				width: 23%;
+				height: 58%;
 				float: left;
-				padding-top: 5px;
-				padding-left: 20px;
+				margin: 8% 0 0% 15%;
 			}
 			view{
-				height: 35px;
-				line-height: 35px;
+				font-size: 14px;
+				height: 8vh;
+				line-height: 8vh;
 				float: left;
-				padding-left: 10px;
+				margin-left: 10%;
 			}
 		}
 	}

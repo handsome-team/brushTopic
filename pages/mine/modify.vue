@@ -11,12 +11,6 @@
 				<view class="mean-li">
 					<input type="text" v-model="ruleForm.signature" placeholder="请输入个人签名" />
 				</view>
-				<view class="mean-li">
-					<input type="number" v-model="ruleForm.errCount" placeholder="请输入错题次数" />
-				</view>
-				<view class="mean-li">
-					<input type="number" v-model="ruleForm.rightCount" placeholder="请输入正确次数" />
-				</view>
 			</view>
 			<view class="btn-box">
 				<text @click="confirm">确认</text>
@@ -29,15 +23,7 @@
 	export default{
 		data(){
 			return{
-				ruleForm:{
-					userid:"",
-					portrait:"",  //头像地址
-					username:"",  //昵称
-					sex:"",  // 性别
-					errorCount:"",  // 错题次数
-					signature	:"", // 个性签名
-					rightCount:""  // 正确次数
-				}
+				ruleForm:{}
 			}
 		},
 		methods:{
@@ -47,9 +33,8 @@
 				})
 			},
 			confirm(){
-				const admin = uni.getStorageSync('admin')
+				var admin = uni.getStorageSync('admin')
 				const {userid} = admin;
-				// console.log(userid)
 				if(admin == ''){
 					uni.showToast({
 						title:"还未登录，请登录"
@@ -57,6 +42,7 @@
 					uni.navigateTo({
 						url:"./mine"
 					})
+					this.ruleForm = ''
 				}else if(this.ruleForm.username == ''){
 					uni.showToast({
 						title:"昵称不能为空"
@@ -70,7 +56,6 @@
 						title:"性别不能为空"
 					})
 				}else{
-					// console.log(this.ruleForm)
 					const _this = this;
 					uni.request({
 						url:`${baseURL}/users/modify`,
@@ -79,12 +64,10 @@
 							userid:userid,
 							nickname:this.ruleForm.username,
 							sex:this.ruleForm.sex,  // 性别
-							errorCount:this.ruleForm.errorCount,  // 错题次数
 							signature	:this.ruleForm.signature, // 个性签名
-							rightCount:this.ruleForm.rightCount  // 正确次数
 						},
 						success:(data)=>{
-							console.log(this)
+							// console.log(this)
 							if(data.data.code == 200){
 								let newAdmin = JSON.parse(JSON.stringify(uni.getStorageSync('admin')))
 								newAdmin.nickname = this.ruleForm.username
@@ -97,7 +80,7 @@
 								uni.navigateTo({
 									url:'./mean'
 								})
-								
+								this.ruleForm = ''
 							}else{
 								uni.showToast({
 									title:"修改失败"

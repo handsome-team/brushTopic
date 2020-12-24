@@ -1,14 +1,13 @@
 <template>
 	<view class="mine-box">
-		
 		<view class="mine-mean">
 			<view class="image-box">
-				<image  v-if='!this.admin' src="../../static/mine/icon.jpg" mode="" />
-				<image v-else="this.admin":src="this.ruleForm.portrait" mode=""/>
+				<image  v-if='!this.ruleForm.portrait' src="../../static/mine/icon.jpg" mode="" />
+				<image v-else="this.ruleForm.portrait":src="this.ruleForm.portrait" mode=""/>
 			</view>
 			<view class="font-box">
-				<text style="font-size: 16px;">{{this.admin == ''?'未登录':this.ruleForm.nickname}}</text>
-				<text style="font-size: 10px;">{{this.admin == ''?'':this.ruleForm.signature}}</text>
+				<text style="font-size: 16px;">{{this.ruleForm.nickname == ''?'未登录':this.ruleForm.nickname}}</text>
+				<text style="font-size: 10px;">{{this.ruleForm.signature == ''?'':this.ruleForm.signature}}</text>
 			</view>
 		</view>
 		<view class="nav-box">
@@ -35,26 +34,15 @@
 					         mode=""></image>
 					</view>
 				  <view class="list-box"
-				        @click="errorCollection">
+				        @click="changePassword">
 				    <view class="background-box"
 				          style="background:#C490BF;">
 				      <image src="../../static/mine/access.png"
 				             mode=""></image>
 				    </view>
-				    <text>错题记录</text>
+				    <text>修改密码</text>
 				    <image src="../../static/mine/right.png"/>
 				  </view>
-					<view class="list-box"
-					      @click="changePassword">
-					  <view class="background-box"
-					        style="background: #2BD99F;">
-					    <image src="../../static/mine/phone.png"
-					           mode=""></image>
-					  </view>
-					  <text>修改密码</text>
-					  <image src="../../static/mine/right.png"
-					         mode=""></image>
-					</view>
 					<view class="list-box"
 					      @click="outlogin">
 					  <view class="background-box"
@@ -62,7 +50,7 @@
 					    <image src="../../static/mine/password.png"
 					           mode=""></image>
 					  </view>
-						<text>{{admin==''?'去登录':'退出登录'}}</text>
+						<text>{{this.ruleForm.nickname ==''?'去登录':'退出登录'}}</text>
 					  <image src="../../static/mine/right.png"
 					         mode=""></image>
 					</view>
@@ -91,10 +79,10 @@
 
 <script>
 	import {baseURL} from '@/api/index.js'
+	import {mapState} from 'vuex'
 	export default {
 		data(){
 			return {
-				admin:"",
 				ruleForm:{
 					nickname:"",
 					portrait:"",
@@ -106,14 +94,11 @@
 				confirmPassword:""
 			};
 		},
+		computed:{...mapState(['admin'])},
 		onShow(){
 			const admin = uni.getStorageSync('admin')
-			// console.log(admin)
-			this.admin = admin;
-			// console.log(admin)
 			if(admin != ''){
 				this.ruleForm = admin;
-				// console.log(this.ruleForm)
 			}
 		},
 		methods:{
@@ -128,20 +113,27 @@
 			},
 			// 去我的收藏
 			toCollection(){
-				uni.navigateTo({
-					url:"./collection"
-				})
+				if(!this.admin){
+					uni.showToast({
+						title:'请先登录'
+					})
+				}else{
+					uni.navigateTo({
+						url:"./collection"
+					})
+				}
 			},
 			//去我的资料 
 			toMean(){
-				uni.navigateTo({
-					url:"./mean"
-				})
-			},
-			errorCollection(){
-				uni.showToast({
-					title:'暂无内容'
-				})
+				if(this.ruleForm == ''){
+					uni.showToast({
+						title:"请先登录"
+					})
+				}else{
+					uni.navigateTo({
+						url:"./mean"
+					})
+				}
 			},
 			// 显示修改密码框
 			changePassword(){
@@ -181,7 +173,6 @@
 					})
 				}else{
 					const _this = this;
-					const admin = uni.getStorageSync('admin');
 					const {userid} = admin; 
 					uni.request({
 						url:`${baseURL}/users/replace`,
@@ -221,7 +212,7 @@
 		background-size: 100%;
 		.image-box{
 			width: 23%;
-			height: 60%;
+			height: 68%;
 			overflow: hidden;
 			background-color: #EEEEEE;
 			border-radius: 50%;
@@ -230,14 +221,14 @@
 			left: 10%;
 			image{
 				width: 100%;
-				height: 120%;
+				height: 100%;
 			}
 		}
 		.font-box{
 			width: 50%;
 			height: 80%;
 			position: relative;
-			top: -43%;
+			top: -50%;
 			left: 40%;
 			color: #EEEEEE;
 			text{
@@ -254,7 +245,7 @@
 	  margin: 1vh auto;
 	  .list-box {
 	    width: 100%;
-	    height: 18%;
+	    height: 20%;
 	    border-bottom: 0.02px solid #e6e6e6;
 	    .background-box {
 	      width: 10%;
@@ -271,7 +262,7 @@
 	      }
 	    }
 	    text {
-	      line-height: 9vh;
+	      line-height: 10vh;
 	      font-size: 14px;
 	      margin-left: 5%;
 	    }

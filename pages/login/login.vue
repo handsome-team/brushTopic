@@ -75,35 +75,8 @@
 				 		title:'密码不能为空'
 				 	})
 				 }else{
-					 const _this = this
-				 	uni.request({
-				 		url:`${baseURL}/users/login`,
-						method:'POST',
-						data:{username:this.username,password:this.password},
-						success(data){
-							// console.log(token)
-							if(data.data.code == 200){
-								const {token} = data.data.data
-								uni.setStorage({
-									key:'token',
-									data:token
-								})
-								// _this.$store.dispatch('loginStates')
-								uni.setStorage({
-									key:'admin',
-									data:data.data.data,
-									
-								})
-								uni.switchTab({
-									url:"../index/index"
-								})
-							}else{
-								uni.showToast({
-									title:"该用户未注册"
-								})
-							}
-						}
-				 	})
+					 const obj = {username:this.username,password:this.password};
+					 this.$store.dispatch('loginStates',obj)
 				 }
 			 },
 			// 注册成功去登录页

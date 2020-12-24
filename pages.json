@@ -20,6 +20,33 @@
 		}
 	},
 	{
+	  "path": "pages/practice/practice",
+	  "style": {
+	    "navigationBarTitleText": "题目详情",
+	    "app-plus": {
+	      "titleNView": true
+	    }
+	  }
+	},
+	{
+	  "path": "pages/search/search",
+	  "style": {
+	    "navigationBarTitleText": "题库搜索",
+	    "app-plus": {
+	      "titleNView": true
+	    }
+	  }
+	},
+	{
+	  "path": "pages/search/detail/detail",
+	  "style": {
+	    "navigationBarTitleText": "题目详情",
+	    "app-plus": {
+	      "titleNView": true
+	    }
+	  }
+	},
+	{
 		"path": "pages/login/login",
 		"style": {
 			"navigationBarTitleText": "登录/注册"
@@ -48,6 +75,18 @@
 		}
 	},
 	{
+	  "path": "pages/practice/index",
+	  "style": {
+	    "navigationBarTitleText": "练习"
+	  }
+	},
+	{
+	   "path": "pages/index/newsdetail",
+	   "style": {
+	     "navigationBarTitleText": "新闻详情"
+	   }
+	 },
+	{
 		"path": "pages/mine/mean",
 		"style": {
 			"navigationBarTitleText": "我的资料"
@@ -69,11 +108,24 @@
 		}
 	},
 	{
+		"path": "pages/exam/main",
+		"style": {
+			"navigationBarTitleText": "考试页面"
+		
+		}
+	},
+	{
 		"path": "pages/mine/collection",
 		"style": {
 			"navigationBarTitleText": "我的收藏"
 			
 		}
+	},
+	{
+	  "path": "pages/exam/main",
+	  "style": {
+	    "navigationBarTitleText": "正在考试ing"
+	  }
 	},
 	{
 		"path": "pages/mine/mine",

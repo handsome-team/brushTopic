@@ -11,8 +11,7 @@
                v-model="inpvalue"
                value=""
                class="inp"
-               placeholder="搜索您想要的内容"
-               @input="changeInput" />
+               placeholder="搜索您想要的内容" />
       </view>
       <view class='searchbtn'>
         <text @click='onSearch'>搜索</text>
@@ -38,6 +37,7 @@
 </template>
 
 <script>
+	import {baseURL} from '@/api/index.js'
 export default {
   data() {
     return {
@@ -61,16 +61,6 @@ export default {
         url: `/pages/search/detail/detail?id=${item.id}`
       });
     },
-    // 清空历史记录
-    clearHistory() {
-      this.searchHistoryList = [];
-    },
-    //输入框为空不显示内容
-    changeInput() {
-      if (this.inpvalue == "") {
-        this.isShow = !this.isShow;
-      }
-    },
     // 搜索
     onSearch() {
       this.contenShow = !this.contenShow;
@@ -80,7 +70,7 @@ export default {
         });
       } else {
         uni.request({
-          url: "http://8.131.83.251:3981/serach",
+          url: `${baseURL}/serach`,
           method: "POST",
           data: {
             text: this.inpvalue

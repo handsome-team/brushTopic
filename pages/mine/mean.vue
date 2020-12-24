@@ -1,10 +1,9 @@
 <template>
 	<view class="mean-box">
-		
 		<view class="mean-list">
 			<view class="icon-li">
 					<text class="mean-left">头像</text>
-					<image :src="ruleForm.portrait" mode=""></image>
+					<image :src="ruleForm.portrait" mode="" @click="chooseImage"></image>
 				</view>
 				<view class="mean-li">
 					<text class="mean-left">昵称</text>
@@ -19,12 +18,8 @@
 					<text class="mean-right">{{ruleForm.sex == ''?'无':ruleForm.sex}}</text>
 				</view>
 				<view class="mean-li">
-					<text class="mean-left">错题次数</text>
-					<text class="mean-right"></text>
-				</view>
-				<view class="mean-li">
 					<text class="mean-left">收藏题数</text>
-					<text class="mean-right">{{ruleForm.sign == []?'0':ruleForm.sign.length}}</text>
+					<text class="mean-right">{{ruleForm.sign == ''?'0':ruleForm.sign.length}}</text>
 				</view>
 			</view>
 			<view class="btn-box">
@@ -35,26 +30,16 @@
 </template>
 
 <script>
+	import {baseURL} from '@/api/index.js'
 	export default{
 		data(){
 			return{
-				ruleForm:{
-					portrait:"",  //头像地址
-					nickname:"",  //昵称
-					sex:"",  // 性别
-					errorCount:"",  // 错题次数
-					signature	:"", // 个性签名
-					rightCount:""  ,// 正确次数
-					sign:""
-				}
+				ruleForm:{}
 			}
 		},
 		onShow(){
 			const admin = uni.getStorageSync('admin')
-			if(admin != ''){
-					this.ruleForm = admin;
-					this.ruleForm.sign = JSON.parse(this.ruleForm.sign)
-			}
+			this.ruleForm = admin
 		},
 		methods:{
 			back(){
@@ -62,9 +47,46 @@
 					url:"./mine"
 				})
 			},
+		 chooseImage() {
+			let _this = this;
+			var admin = uni.getStorageSync('admin')
+			const {userid,portrait} = admin;
+			uni.chooseImage({ //选择图片
+			 count: 1,
+			 sizeType: ["compressed"],
+			 success(res) {
+				var imgsFile = res.tempFilePaths[0]; //获取图片的临时资源
+				uni.uploadFile({ //上传代码
+				
+				 url: `${baseURL}/users/herad`, //本地 node.js 服务器地址
+				 filePath: imgsFile,
+				 formData: {
+					userid:  _this.ruleForm.userid,
+					qianurl: _this.ruleForm.portrait
+				 },
+				 name: "file", //这个东西有点类似与 form 表单中的 name 值 在后面也需要这个
+				 success: function(res) {
+					let data = JSON.parse(res.data);
+					console.log(data)
+					if(data.code == 200 ){
+						let newAdmin = uni.getStorageSync('admin')
+						newAdmin.portrait = data.imgurl
+						_this.ruleForm = newAdmin
+						_this.$store.commit("getNewZiliao", {
+							 portrait: data.imgurl,newAdmin
+							})
+						}else{
+							uni.showToast({
+								title:"修改失败"
+							})
+						}
+					}
+				})
+			 }
+			})
+		 },
 			modify(){
-				const admin = uni.getStorageSync('admin')
-				if(admin == ''){
+				if(this.ruleForm == ''){
 					uni.showToast({
 						title:"还未登录，请登录"
 					})
