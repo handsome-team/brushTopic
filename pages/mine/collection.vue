@@ -28,9 +28,8 @@
 			uni.request({
 				url:`${baseURL}/problem/test`,
 				method:"POST",
-				data:{data:sign},
+				data:{data:JSON.stringify(sign)},
 				success: (res) => {
-					// console.log(res.data.data)
 					this.dataList = res.data.data
 					const optionsList = this.dataList.map(item => {
 						item.options = JSON.parse(item.options)

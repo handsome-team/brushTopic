@@ -81,6 +81,12 @@
 	  }
 	},
 	{
+	   "path": "pages/index/newsdetail",
+	   "style": {
+	     "navigationBarTitleText": "新闻详情"
+	   }
+	 },
+	{
 		"path": "pages/mine/mean",
 		"style": {
 			"navigationBarTitleText": "我的资料"

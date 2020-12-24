@@ -63,13 +63,10 @@
 				</checkbox-group>
 				<view class="tip" v-if="tip">
 					答案是：{{rightAnswer}} 您选：{{userAnswer}}
-
 				</view>
 				<view v-if="tip">
 					解析：{{practiceList[index].explain}}
 				</view>
-
-
 			</view>
 			<view class="btnBox">
 				<text @click="toprev">上一题</text>
@@ -105,6 +102,7 @@
 </template>
 
 <script>
+	import {baseURL} from '@/api/index.js'
 	export default {
 		data() {
 			return {
@@ -141,7 +139,7 @@
 			uni.getStorage({
 				key:'admin',
 				success:function(res){
-					_this.shouList = JSON.parse(res.data.sign)
+					_this.shouList = res.data.sign
 				}
 				
 			})
@@ -343,7 +341,7 @@
 					success: function(res) {
 						_this.isShow = !_this.isShow
 						let admin = res.data
-						let data = JSON.parse(res.data.sign)
+						let data = res.data.sign
 						let userid = res.data.userid
 						_this.shouList = data
 						let type;
@@ -362,7 +360,7 @@
 							data:admin
 						})
 						uni.request({
-							url: 'http://8.131.83.251:3981/collection',
+							url: `${baseURL}/collection`,
 							data: {
 								id: id,
 								userid: userid,
@@ -403,7 +401,7 @@
 			// 获取数据
 			getData: function(page, myclass, id) {
 				uni.request({
-					url: 'http://8.131.83.251:3981/problem/getdata',
+					url: `${baseURL}/problem/getdata`,
 					method: 'POST',
 					data: {
 						page: page,
@@ -436,7 +434,7 @@
 	.practice {
 		width: 100%;
 		height: 100%;
-
+		font-size: 14px;
 		.selectsubject {
 			width: 100vw;
 			height: 100vh;
