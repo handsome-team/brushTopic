@@ -150,7 +150,7 @@
 				key: 'admin',
 				success: function(res) {
 					// _this.shouList = res.data.sign
-					_this.shouList = JSON.parse(res.data.sign)
+					_this.shouList = JSON.parse(res.data).sign
 					
 				}
 			})
@@ -227,7 +227,6 @@
 						return item = this.radiotrans[item]
 					})
 					return newanswer
-					console.log(newanswer)
 				}
 			},
 			// 单选框
@@ -346,10 +345,9 @@
 					key: 'admin',
 					success: function(res) {
 						_this.isShow = !_this.isShow
-						let admin = res.data
-						// let data = res.data.sign
-						let data = JSON.parse(res.data.sign)
-						let userid = res.data.userid
+						let admin = JSON.parse(res.data)
+						let data = admin.sign
+						let userid = admin.userid
 						_this.shouList = data
 						let type;
 						if (_this.isShow) {
@@ -359,10 +357,10 @@
 							type = 'delete'
 							_this.shouList = _this.shouList.filter((item => id != item))
 						}
-						admin.sign = JSON.stringify(_this.shouList)
+						admin.sign = _this.shouList
 						uni.setStorage({
 							key: 'admin',
-							data: admin
+							data: JSON.stringify(admin)
 						})
 						uni.request({
 							url: `${baseURL}/collection`,

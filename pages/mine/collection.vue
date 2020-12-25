@@ -27,12 +27,12 @@
 		},
 		onLoad(){
 			const admin = uni.getStorageSync('admin');
-			const sign = admin.sign
+			const sign = JSON.parse(admin).sign
 			if(sign.length>0){
 				uni.request({
 					url:`${baseURL}/problem/test`,
 					method:"POST",
-					data:{data:sign},
+					data:{data:JSON.stringify(sign)},
 					success: (res) => {
 						let data = res.data.data
 						let newdata = data.map(item => {
