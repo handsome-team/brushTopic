@@ -6,8 +6,8 @@
 				<image v-else="this.ruleForm.portrait":src="this.ruleForm.portrait" mode=""/>
 			</view>
 			<view class="font-box">
-				<text style="font-size: 16px;">{{this.ruleForm.nickname == ''?'未登录':this.ruleForm.nickname}}</text>
-				<text style="font-size: 10px;">{{this.ruleForm.signature == ''?'':this.ruleForm.signature}}</text>
+				<text style="font-size: 16px;">{{this.ruleForm.nickname != ''?this.ruleForm.nickname:'未登录'}}</text>
+				<text style="font-size: 10px;">{{this.ruleForm.signature != ''?this.ruleForm.signature:''}}</text>
 			</view>
 		</view>
 		<view class="nav-box">
@@ -50,7 +50,7 @@
 					    <image src="../../static/mine/password.png"
 					           mode=""></image>
 					  </view>
-						<text>{{this.ruleForm.nickname ==''?'去登录':'退出登录'}}</text>
+						<text>{{this.ruleForm.nickname !=''?'退出登录':'去登录'}}</text>
 					  <image src="../../static/mine/right.png"
 					         mode=""></image>
 					</view>
@@ -96,8 +96,8 @@
 		},
 		computed:{...mapState(['admin'])},
 		onShow(){
-			const admin = uni.getStorageSync('admin')
-			if(admin != ''){
+			var admin = uni.getStorageSync('admin')
+			if(admin){
 				this.ruleForm = admin;
 			}
 		},
@@ -113,7 +113,7 @@
 			},
 			// 去我的收藏
 			toCollection(){
-				if(!this.admin){
+				if(this.ruleForm==''){
 					uni.showToast({
 						title:'请先登录'
 					})
