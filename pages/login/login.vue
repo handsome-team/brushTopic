@@ -115,7 +115,6 @@
 						data:{username:this.username,password:this.password},
 						success(data){
 							
-							// console.log(data)
 							if(data.data.code == 200){
 								uni.showToast({
 									title:data.data.message
@@ -123,7 +122,6 @@
 								_this.isShow = !_this.isShow
 								_this.password = '';
 								_this.username = ''
-								// console.log(_this.isShow)
 							}else{
 								uni.showToast({
 									title:'注册失败'

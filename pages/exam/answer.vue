@@ -19,7 +19,6 @@
 			}
 		},
 		onLoad(e) {
-			// console.log(e)
 			this.right = Number(e.right)
 			this.error = Number(e.error)
 		}

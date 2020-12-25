@@ -22,20 +22,19 @@ export default new Vuex.Store({
 	},
 	actions:{
 		loginStates({commit},layer){
-			// console.log(layer)  //layer为传过来的参数
+			//layer为传过来的参数
 			uni.request({
 				url:`${baseURL}/users/login`,
 				method:'POST',
 				data:layer,
 				success({data}){
-					// console.log(token)
 					if(data.code == 200){
 						commit('loginState',data.data)
 						const {token} = data.data
 						data.data.sign = JSON.parse(data.data.sign);
 						uni.setStorage({
 							key:"admin",
-							data:data.data
+							data:JSON.stringify(data.data)
 						})
 						uni.switchTab({
 							url:"/pages/index/index"

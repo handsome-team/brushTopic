@@ -234,7 +234,6 @@
 							});
 							// 将后端返回的数据赋值给vue实例上的参数
 							_this.problemList = [..._this.problemList, ...newdata];
-							// console.log(_this.problemList);
 						}
 						//
 						if (code == 0) {
@@ -243,8 +242,6 @@
 								icon: 'none'
 							});
 						}
-						// console.log(data, code, msg);
-						// _this.
 					},
 					// 失败时的回调
 					fail(err) {
