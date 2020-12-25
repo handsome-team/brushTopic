@@ -132,7 +132,6 @@
 				}
 			},
 			switchPage(myclass) {
-				console.log(myclass);
 				uni.navigateTo({
 					url: `/pages/practice/practice?myclass=${myclass}`
 				});

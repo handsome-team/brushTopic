@@ -5,6 +5,7 @@ import {baseURL} from '@/api/index.js'
 export default new Vuex.Store({
 	state:{
 		admin:{}
+		
 	},
 	mutations:{
 		loginState(state,payload){

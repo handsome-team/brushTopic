@@ -8,7 +8,8 @@
 				请选择题目
 			</view>
 			<view class="select">
-				<view class="selectindex" v-for="(item,xindex) in practiceList" :key='item.title' @click="selectindex(xindex)">
+				<view class="selectindex" :style="rightSubject.find(list=>list.id ==  item.id)?'background: pink;':errorSubject.find(list=>list.id ==  item.id)?'background: yellow;':''"
+				 v-for="(item,xindex) in practiceList" :key='item.title' @click="selectindex(xindex)">
 					{{xindex+1}}
 				</view>
 			</view>
@@ -102,10 +103,13 @@
 </template>
 
 <script>
-	import {baseURL} from '@/api/index.js'
+	import {
+		baseURL
+	} from '@/api/index.js'
 	export default {
 		data() {
 			return {
+				
 				current: 0,
 				isShow: false,
 				tip: false,
@@ -135,22 +139,22 @@
 			};
 		},
 		onLoad(option) {
-			const _this = this
-			uni.getStorage({
-				key:'admin',
-				success:function(res){
-					_this.shouList = res.data.sign
-				}
-				
-			})
 			if (option.myclass) {
 				this.getData(1, option.myclass, '')
 			} else {
 				this.getData(1, '', option.id)
 			}
 			uni.hideTabBar()
+			const _this = this
+			uni.getStorage({
+				key: 'admin',
+				success: function(res) {
+					// _this.shouList = res.data.sign
+					_this.shouList = JSON.parse(res.data.sign)
+					
+				}
+			})
 		},
-		mounted() {},
 		methods: {
 			// 上一题
 			toprev() {
@@ -182,6 +186,9 @@
 						this.isShow = false
 					}
 					this.index += 1
+					if (this.index == this.practiceList.length - 1) {
+						this.getData(Math.ceil(this.practiceList.length / 10) + 1)
+					}
 				} else {
 					uni.showToast({
 						title: '已经是最后一题了',
@@ -247,11 +254,10 @@
 							this.isShow = false
 						}
 						this.index += 1
-						
+
 					}
 					if (this.index == this.practiceList.length - 1) {
 						this.getData(Math.ceil(this.practiceList.length / 10) + 1)
-
 					}
 				} else {
 					this.tip = true
@@ -335,29 +341,28 @@
 			},
 			// 收藏
 			tocollect(id) {
-				const _this = this;
+				const _this = this
 				uni.getStorage({
 					key: 'admin',
 					success: function(res) {
 						_this.isShow = !_this.isShow
 						let admin = res.data
-						let data = res.data.sign
+						// let data = res.data.sign
+						let data = JSON.parse(res.data.sign)
 						let userid = res.data.userid
 						_this.shouList = data
 						let type;
 						if (_this.isShow) {
 							type = 'add'
 							_this.shouList.push(id)
-							
 						} else {
 							type = 'delete'
-							_this.shouList =_this.shouList.filter((item => id != item))
+							_this.shouList = _this.shouList.filter((item => id != item))
 						}
-						console.log(_this.shouList)
-						admin.sign=JSON.stringify(_this.shouList)
+						admin.sign = JSON.stringify(_this.shouList)
 						uni.setStorage({
-							key:'admin',
-							data:admin
+							key: 'admin',
+							data: admin
 						})
 						uni.request({
 							url: `${baseURL}/collection`,
@@ -383,16 +388,16 @@
 					},
 					fail: function() {
 						uni.showModal({
-						    title: '您还没有登录，是否登录？',
-						    success: function (res) {
-						        if (res.confirm) {
-						            uni.navigateTo({
-						            	url:'/pages/login/login'
-						            })
-						        } else if (res.cancel) {
-						            return false
-						        }
-						    }
+							title: '您还没有登录，是否登录？',
+							success: function(res) {
+								if (res.confirm) {
+									uni.navigateTo({
+										url: '/pages/login/login'
+									})
+								} else if (res.cancel) {
+									return false
+								}
+							}
 						});
 					}
 				})
@@ -435,6 +440,7 @@
 		width: 100%;
 		height: 100%;
 		font-size: 14px;
+
 		.selectsubject {
 			width: 100vw;
 			height: 100vh;
@@ -475,7 +481,7 @@
 					text-align: center;
 					margin: 10px;
 					color: #555555;
-					background-color: #F0AD4E;
+					// background-color: #F0AD4E;
 					border: 1px solid #DD524D;
 				}
 			}

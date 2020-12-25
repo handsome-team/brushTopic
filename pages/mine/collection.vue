@@ -15,28 +15,34 @@
 
 <script>
 	import {baseURL} from '@/api/index.js'
+	import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
 				dataList:[]
 			}
 		},
+		computed:{
+			...mapState(['admin'])
+		},
 		onLoad(){
 			const admin = uni.getStorageSync('admin');
-			// console.log(admin)
-			const {sign} = admin
-			uni.request({
-				url:`${baseURL}/problem/test`,
-				method:"POST",
-				data:{data:JSON.stringify(sign)},
-				success: (res) => {
-					this.dataList = res.data.data
-					const optionsList = this.dataList.map(item => {
-						item.options = JSON.parse(item.options)
-						return item
-					})
-				}
-			})
+			const sign = admin.sign
+			if(sign.length>0){
+				uni.request({
+					url:`${baseURL}/problem/test`,
+					method:"POST",
+					data:{data:sign},
+					success: (res) => {
+						let data = res.data.data
+						let newdata = data.map(item => {
+							item.options = JSON.parse(item.options)
+							return item
+						})
+						this.dataList = data
+					}
+				})
+			}
 		},
 		methods:{
 			back(){
