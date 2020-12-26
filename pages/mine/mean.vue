@@ -39,7 +39,7 @@
 		},
 		onShow(){
 			const admin = JSON.parse(uni.getStorageSync('admin'))
-			console.log(admin)
+			// console.log(admin)
 			this.ruleForm = admin
 		},
 		methods:{
