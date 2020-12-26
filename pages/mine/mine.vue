@@ -6,8 +6,8 @@
 				<image v-else="this.ruleForm.portrait":src="this.ruleForm.portrait" mode=""/>
 			</view>
 			<view class="font-box">
-				<text style="font-size: 16px;">{{this.ruleForm.nickname == ''?'未登录':this.ruleForm.nickname}}</text>
-				<text style="font-size: 10px;">{{this.ruleForm.signature == ''?'':this.ruleForm.signature}}</text>
+				<text style="font-size: 16px;">{{ruleForm.nickname?ruleForm.nickname:'未登录'}}</text>
+				<text style="font-size: 10px;">{{ruleForm.signature?ruleForm.signature:''}}</text>
 			</view>
 		</view>
 		<view class="nav-box">
@@ -50,7 +50,7 @@
 					    <image src="../../static/mine/password.png"
 					           mode=""></image>
 					  </view>
-						<text>{{this.ruleForm.nickname ==''?'去登录':'退出登录'}}</text>
+						<text>{{ruleForm.nickname?'退出登录':'去登录'}}</text>
 					  <image src="../../static/mine/right.png"
 					         mode=""></image>
 					</view>
@@ -96,7 +96,7 @@
 		},
 		computed:{...mapState(['admin'])},
 		onShow(){
-			const admin = uni.getStorageSync('admin')
+			const admin = JSON.parse(uni.getStorageSync('admin'))
 			if(admin != ''){
 				this.ruleForm = admin;
 			}

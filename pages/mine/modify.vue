@@ -33,7 +33,7 @@
 				})
 			},
 			confirm(){
-				var admin = uni.getStorageSync('admin')
+				var admin = JSON.parse(uni.getStorageSync('admin'))
 				const {userid} = admin;
 				if(admin == ''){
 					uni.showToast({
@@ -62,20 +62,20 @@
 						method:"POST",
 						data:{
 							userid:userid,
-							nickname:this.ruleForm.username,
-							sex:this.ruleForm.sex,  // 性别
-							signature	:this.ruleForm.signature, // 个性签名
+							nickname:_this.ruleForm.username,
+							sex:_this.ruleForm.sex,  // 性别
+							signature	:_this.ruleForm.signature, // 个性签名
 						},
-						success:(data)=>{
-							// console.log(this)
-							if(data.data.code == 200){
-								let newAdmin = JSON.parse(JSON.stringify(uni.getStorageSync('admin')))
+						success:(res)=>{
+							let {code} = res.data
+							if(code == 200){
+								let newAdmin = JSON.parse(uni.getStorageSync('admin'))
 								newAdmin.nickname = this.ruleForm.username
 								newAdmin.sex = this.ruleForm.sex
 								newAdmin.signature = this.ruleForm.signature
-								uni.setStorageSync('admin',newAdmin)
+								uni.setStorageSync('admin',JSON.stringify(newAdmin))
 								uni.showToast({
-									title:data.data.msg
+									title:'修改成功'
 								})
 								uni.navigateTo({
 									url:'./mean'

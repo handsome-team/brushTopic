@@ -38,7 +38,8 @@
 			}
 		},
 		onShow(){
-			const admin = uni.getStorageSync('admin')
+			const admin = JSON.parse(uni.getStorageSync('admin'))
+			console.log(admin)
 			this.ruleForm = admin
 		},
 		methods:{
@@ -47,44 +48,48 @@
 					url:"./mine"
 				})
 			},
-		 chooseImage() {
-			let _this = this;
-			var admin = uni.getStorageSync('admin')
-			const {userid,portrait} = admin;
-			uni.chooseImage({ //选择图片
-			 count: 1,
-			 sizeType: ["compressed"],
-			 success(res) {
-				var imgsFile = res.tempFilePaths[0]; //获取图片的临时资源
-				uni.uploadFile({ //上传代码
-				
-				 url: `${baseURL}/users/herad`, //本地 node.js 服务器地址
-				 filePath: imgsFile,
-				 formData: {
-					userid:  _this.ruleForm.userid,
-					qianurl: _this.ruleForm.portrait
-				 },
-				 name: "file", //这个东西有点类似与 form 表单中的 name 值 在后面也需要这个
-				 success: function(res) {
-					let data = JSON.parse(res.data);
-					console.log(data)
-					if(data.code == 200 ){
-						let newAdmin = uni.getStorageSync('admin')
-						newAdmin.portrait = data.imgurl
-						_this.ruleForm = newAdmin
-						_this.$store.commit("getNewZiliao", {
-							 portrait: data.imgurl,newAdmin
-							})
-						}else{
-							uni.showToast({
-								title:"修改失败"
-							})
-						}
-					}
-				})
-			 }
-			})
-		 },
+			chooseImage() {
+			    let _this = this;
+			    
+			    uni.chooseImage({
+			     //选择图片
+			     count: 1,
+			     sizeType: ['compressed'],
+			     success(res) {
+			      var imgsFile = res.tempFilePaths[0]; //获取图片的临时资源
+			      uni.uploadFile({
+			       //上传代码
+			       url: 'http://8.131.83.251:3981/users/herad', //本地node.js服务器地址
+			       filePath: imgsFile,
+			       formData: {
+			        userid: _this.ruleForm.userid,
+			        qianurl: _this.ruleForm.portrait
+			       },
+			       name: 'file', //这个东西有点类似与 form表单中的  name值 在后面也需要这个
+			       success: function(res) {
+					   console.log(res)
+			        const {
+			         data,statusCode
+			        } = res;
+			        if (statusCode == 200) {
+			         uni.showToast({
+			          title: data.msg,
+			          duration: 2000
+			         });
+			         _this.ruleForm.portrait = JSON.parse(data).imgurl
+			         // _this.$store.dispatch('loginStates')
+			        } else {
+			         uni.showToast({
+			          title: data.msg,
+			          icon: 'none',
+			          duration: 2000
+			         });
+			        }
+			       }
+			      });
+			     }
+			    });
+			   },
 			modify(){
 				if(this.ruleForm == ''){
 					uni.showToast({
