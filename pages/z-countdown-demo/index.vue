@@ -39,9 +39,7 @@
 		onLoad() {
 
 			let that = this;
-			// this.$refs.countDown.$on('timeup',()=>{
-			// 	that.visible = false
-			// })
+			
 		}
 
 	}

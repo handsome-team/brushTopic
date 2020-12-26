@@ -17,6 +17,7 @@
 </template>
 
 <script>
+	import {baseURL} from '@/api/index.js'
 export default {
   data() {
     return {
@@ -52,7 +53,7 @@ export default {
     // 详情数据
     getDetailData() {
       uni.request({
-        url: "http://8.131.83.251:3981/problem/getdata",
+        url: `${baseURL}/problem/getdata`,
         method: "POST",
         data: {
           page: 1,
