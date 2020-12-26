@@ -2,8 +2,8 @@
 	<view class="mine-box">
 		<view class="mine-mean">
 			<view class="image-box">
-				<image  v-if='!this.ruleForm.portrait' src="../../static/mine/icon.jpg" mode="" />
-				<image v-else="this.ruleForm.portrait":src="this.ruleForm.portrait" mode=""/>
+				<image  v-if='!ruleForm.portrait' src="../../static/mine/icon.jpg" mode="" />
+				<image v-else :src="ruleForm.portrait" mode=""/>
 			</view>
 			<view class="font-box">
 				<text style="font-size: 16px;">{{ruleForm.nickname?ruleForm.nickname:'未登录'}}</text>
@@ -113,7 +113,7 @@
 			},
 			// 去我的收藏
 			toCollection(){
-				if(!this.admin){
+				if(this.ruleForm==''){
 					uni.showToast({
 						title:'请先登录'
 					})
