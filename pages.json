@@ -9,6 +9,12 @@
         }
       }
     },
+	{
+	  "path": "pages/index/newsdetail",
+	  "style": {
+	    "navigationBarTitleText": "新闻详情"
+	  }
+	},
     {
       "path": "pages/practice/index",
       "style": {
