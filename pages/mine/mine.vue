@@ -103,7 +103,7 @@
 			},
 			// 去我的收藏
 			toCollection() {
-				if (this.ruleForm == '') {
+				if (!this.$store.state.admin.userid) {
 					uni.showToast({
 						title: '请先登录'
 					})
@@ -115,7 +115,7 @@
 			},
 			//去我的资料 
 			toMean() {
-				if (this.ruleForm == '') {
+				if (!this.$store.state.admin.userid) {
 					uni.showToast({
 						title: "请先登录"
 					})
@@ -127,7 +127,8 @@
 			},
 			// 显示修改密码框
 			changePassword() {
-				if (!this.admin) {
+				// const admin = JSON.parse(uni.getStorage('admin'))
+				if (!this.$store.state.admin.userid) {
 					uni.showToast({
 						title: "请先登录"
 					})
@@ -165,7 +166,7 @@
 					const _this = this;
 					const {
 						userid
-					} = admin;
+					} = this.$store.state.admin;
 					uni.request({
 						url: `${baseURL}/users/replace`,
 						method: "POST",
@@ -183,6 +184,9 @@
 								this.ruleForm = ''
 								uni.clearStorage('token')
 								uni.clearStorage('admin')
+								uni.navigateTo({
+									url: "/pages/login/login"
+								})
 							} else {
 								uni.showToast({
 									title: '修改失败'
@@ -274,11 +278,11 @@
 			}
 
 			image {
-				width: 9%;
-				height: 50%;
-				margin-top: 6%;
+				width: 5%;
+				height: 25%;
+				margin-top: 9%;
 				float: right;
-				margin-right: 3%;
+				margin-right: 3%
 			}
 		}
 	}

@@ -48,7 +48,7 @@ export default new Vuex.Store({
 							token
 						} = data.data
 						data.data.sign = JSON.parse(data.data.sign);
-						console.log(data.data)
+						// console.log(data.data)
 						uni.setStorage({
 							key: "admin",
 							data: JSON.stringify(data.data)
