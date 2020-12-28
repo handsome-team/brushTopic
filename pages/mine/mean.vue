@@ -26,7 +26,6 @@
 			<text @click="modify">编辑资料</text>
 		</view>
 	</view>
-	</view>
 </template>
 
 <script>
@@ -47,7 +46,6 @@
 				this.datalist = this.ruleForm.sign
 			}
 
-			console.log(this.ruleForm.sign.length)
 		},
 		methods: {
 			back() {

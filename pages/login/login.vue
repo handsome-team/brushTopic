@@ -26,9 +26,13 @@
 					<image src="../../static/mine/sheep.jpg" mode=""></image>
 				</view>
 				<view class="label-box">
-					<input type="text" value="" placeholder="请输入账号" v-model="username" @input=""/>
+					<input type="text" value="" placeholder="请输入账号" v-model="username"/>
 					<input type="password" value="" placeholder="请输入密码" v-model="password"/>
 					<input type="password" value="" placeholder="请确认密码" v-model="confirmPassword"/>
+					<view class="code-box">
+						<input type="text" value="" placeholder="输入验证码" v-model="code"/>
+						<text @click="sendCode">发送验证码</text>
+					</view>
 				</view>
 			</view>
 			<view class="btn-box">
@@ -51,7 +55,8 @@
 				isShow:true,
 				username:"",
 				password:"",
-				confirmPassword:""
+				confirmPassword:"",
+				code:""
 			}
 			
 		},
@@ -79,10 +84,14 @@
 					 this.$store.dispatch('loginStates',obj)
 				 }
 			 },
-			// 注册成功去登录页
-			tologin(){
+
+			 // 发送验证码
+			 sendCode(){
 				const _this = this
-				const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+				// 邮箱注册
+				const reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+				// 手机号注册
+				// const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
 				// 判断是否为空
 				if(this.username == ''){
 					uni.showToast({
@@ -90,7 +99,7 @@
 					})
 				}else if(!reg.test(this.username)){ 
 					uni.showToast({
-						title:"请输入正确的手机号"
+						title:"请输入正确的邮箱号"
 					})
 				}else if(this.password == ''){
 					uni.showToast({
@@ -110,11 +119,66 @@
 					})
 				}else{
 					uni.request({
+						url:`${baseURL}/users/getlma`,
+						method:"POST",
+						data:{username:this.username},
+						success(res){
+							if(res.data.code == 200){
+								uni.showToast({
+									title:res.data.msg
+								})
+							}else{
+								uni.showToast({
+									title:'发送失败'
+								})
+							}
+						}
+					})				 
+				}
+				
+			 },
+			 
+			// 注册成功去登录页
+			tologin(){
+				const _this = this
+				var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+				// const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+				// 判断是否为空
+				if(this.username == ''){
+					uni.showToast({
+						title:'用户名不能为空'
+					})
+				}else if(!reg.test(this.username)){ 
+					uni.showToast({
+						title:"请输入正确的邮箱号"
+					})
+				}else if(this.password == ''){
+					uni.showToast({
+						title:'密码不能为空'
+					})
+				}else if(this.code == '') {
+					uni.showToast({
+						title:'请输入验证码'
+					})
+				}else if(this.password.length <6) {
+					uni.showToast({
+						title:'密码不能小于六位'
+					})
+				}else if(this.confirmPassword == '') {
+					uni.showToast({
+						title:'请确认密码'
+					})
+				}else if(this.password != this.confirmPassword){
+					uni.showToast({
+						title:'两次密码不一致'
+					})
+				}else{
+					uni.request({
 						url:`${baseURL}/users/register`,
 						method:'POST',
-						data:{username:this.username,password:this.password},
+						data:{username:this.username,password:this.password,code:this.code},
 						success(data){
-							
+							console.log(data)
 							if(data.data.code == 200){
 								uni.showToast({
 									title:data.data.message
@@ -156,7 +220,29 @@
 				}
 			}
 			.label-box{
-				input{
+				.code-box{
+					width: 100%;
+					height: 5vh;
+					input{
+						width: 40%;
+						float: left;
+						margin-left:10% ;
+					}
+					text{
+						float: right;
+						margin-top: 7%;
+						font-size: 14px;
+						width: 30%;
+						margin-right: 10%;
+						display: block;
+						text-align: center;
+						border-radius: 20px;
+						line-height: 5vh;
+						color: white;
+						background: #FE5407;
+					}
+				}
+				code-box>input,input{
 					width: 80%;
 					text-align: center;
 					height: 6vh;
@@ -169,11 +255,11 @@
 		.btn-box{
 			width: 100%;
 			height: 5vh;
+			text-align: center;
 			text{
 				font-size: 14px;
-				display: block;
+				display: inline-block;
 				width: 70%;
-				text-align: center;
 				height: 5vh;
 				margin: 2vh auto;
 				text-align: center;

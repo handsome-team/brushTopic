@@ -37,7 +37,6 @@
 </template>
 
 <script>
-	import {baseURL} from '@/api/index.js'
 export default {
   data() {
     return {
@@ -48,7 +47,6 @@ export default {
     };
   },
   methods: {
-    onChanginput() {},
     // 去首页
     goHome() {
       uni.switchTab({
@@ -70,7 +68,7 @@ export default {
         });
       } else {
         uni.request({
-          url: `${baseURL}/serach`,
+          url: "http://8.131.83.251:3981/serach",
           method: "POST",
           data: {
             text: this.inpvalue
@@ -90,15 +88,6 @@ export default {
                 return item;
               }
             });
-            if (this.dataList.length > 0) {
-              this.searchHistoryList.push(this.inpvalue);
-            } else {
-              uni.showToast({
-                title: "暂无数据"
-              });
-              this.searchHistoryList.push(this.inpvalue);
-              this.inpvalue = "";
-            }
           }
         });
       }
@@ -120,6 +109,7 @@ export default {
     height: 60px;
     margin: 25px 0px 0px 18px;
     overflow: hidden;
+
     .searchBox {
       width: 65vw;
       height: 40px;
@@ -168,6 +158,7 @@ export default {
   .contentContainer {
     width: 100vw;
     height: 100%;
+
     .contentshadow {
       width: 100%;
       margin-top: 10px;
