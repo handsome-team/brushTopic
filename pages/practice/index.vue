@@ -66,7 +66,7 @@ export default {
 			width: 40%;
 			height: 8vh;
 			float: left;
-			margin: 20px 0px 10px 30px;
+			margin: 20px 0px 10px 25px;
 			border-radius: 5px;
 			image{
 				width: 23%;
@@ -79,7 +79,7 @@ export default {
 				height: 8vh;
 				line-height: 8vh;
 				float: left;
-				margin-left: 10%;
+				margin-left: 13%;
 			}
 		}
 	}
