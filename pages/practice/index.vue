@@ -1,44 +1,48 @@
 <template>
 	<view class="sortBox">
-		<view class="sortItem" style="background-color: pink;" @click="toSubject('html')">
+		<view class="sortItem" @click="toSubject('html')">
 			<image src="/static/practice/006.png"></image>
 			<view>html</view>
 		</view>
-		<view class="sortItem" style="background-color: yellow;" @click="toSubject('css')">
+		<view class="sortItem" @click="toSubject('css')">
 			<image src="/static/practice/007.png"></image>
 			<view>css</view>
 		</view>
-		<view class="sortItem" style="background-color: orange;" @click="toSubject('js')">
+		<view class="sortItem" @click="toSubject('js')">
 			<image src="/static/practice/009.png"></image>
 			<view>js</view>
 		</view>
-		<view class="sortItem" style="background-color:royalblue ;" @click="toSubject('jq')">
+		<view class="sortItem" @click="toSubject('jq')">
 			<image src="/static/practice/008.png"></image>
 			<view>jq</view>
 		</view>
-		<view class="sortItem" style="background-color: #B2A6E5;" @click="toSubject('ajax')">
+		<view class="sortItem" @click="toSubject('ajax')">
 			<image src="/static/practice/013.png"></image>
 			<view>ajax</view>
 		</view>
-		<view class="sortItem" style="background-color: #BCE771;" @click="toSubject('es6')">
+		<view class="sortItem" @click="toSubject('es6')">
 			<image src="/static/practice/012.png"></image>
 			<view>es6</view>
 		</view>
-		<view class="sortItem" style="background-color: #31E0F5;" @click="toSubject('vue')">
+		<view class="sortItem" @click="toSubject('vue')">
 			<image src="/static/practice/011.png"></image>
 			<view>vue</view>
 		</view>
-		<view class="sortItem" style="background-color: #D2DCE2;" @click="toSubject('react')">
+		<view class="sortItem" @click="toSubject('react')">
 			<image src="/static/practice/010.png"></image>
 			<view>react</view>
 		</view>
-		<view class="sortItem" style="background-color: #35DCA4;" @click="toSubject('node')">
+		<view class="sortItem" @click="toSubject('node')">
 			<image src="/static/practice/node.png"></image>
 			<view>node</view>
 		</view>
-		<view class="sortItem" style="background-color: #35DCA4;" @click="toSubject('webpack')">
+		<view class="sortItem" @click="toSubject('webpack')">
 			<image src="/static/practice/webpack%20.png"></image>
-			<view>web</view>
+			<view>webpack</view>
+		</view>
+		<view class="sortItem" @click="toSubject('')">
+			<image src="/static/practice/016.png"></image>
+			<view>all</view>
 		</view>
 	</view>
 </template>
@@ -68,6 +72,7 @@ export default {
 			float: left;
 			margin: 20px 0px 10px 25px;
 			border-radius: 5px;
+			box-shadow: 0px 4px 20px -6px #C0C0C0;
 			image{
 				width: 23%;
 				height: 58%;
@@ -79,7 +84,7 @@ export default {
 				height: 8vh;
 				line-height: 8vh;
 				float: left;
-				margin-left: 13%;
+				margin-left: 8%;
 			}
 		}
 	}

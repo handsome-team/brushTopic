@@ -5,8 +5,8 @@
 				<image :src="$store.state.admin.portrait? $store.state.admin.portrait :'../../static/mine/icon.jpg'" mode="" />
 			</view>
 			<view class="font-box">
-				<text style="font-size: 16px;">{{ruleForm.nickname?ruleForm.nickname:'未登录'}}</text>
-				<text style="font-size: 10px;">{{ruleForm.signature?ruleForm.signature:''}}</text>
+				<text style="font-size: 16px;">{{$store.state.admin.nickname?$store.state.admin.nickname:'未登录'}}</text>
+				<text style="font-size: 10px;">{{$store.state.admin.signature?$store.state.admin.signature:''}}</text>
 			</view>
 		</view>
 		<view class="nav-box">
@@ -35,7 +35,7 @@
 				<view class="background-box" style="background:#47B4F5;">
 					<image src="../../static/mine/password.png" mode=""></image>
 				</view>
-				<text>{{ruleForm.nickname?'退出登录':'去登录'}}</text>
+				<text>{{$store.state.admin.nickname?'退出登录':'去登录'}}</text>
 				<image src="../../static/mine/right.png" mode=""></image>
 			</view>
 		</view>
@@ -82,10 +82,9 @@
 				confirmPassword: ""
 			};
 		},
-		// computed:{...mapState(['admin'])},
 		onShow() {
 			// const admin = uni.getStorageSync('admin')
-			const admin = JSON.parse(uni.getStorageSync('admin'))
+			const admin = this.$store.state.admin
 			// console.log(admin)
 			if (admin != '') {
 				this.ruleForm = admin;
@@ -96,7 +95,7 @@
 			outlogin() {
 				uni.clearStorage('token')
 				uni.clearStorage('admin')
-				this.ruleForm = ''
+				this.$store.state.admin = ''
 				uni.navigateTo({
 					url: "/pages/login/login"
 				})
@@ -127,7 +126,6 @@
 			},
 			// 显示修改密码框
 			changePassword() {
-				// const admin = JSON.parse(uni.getStorage('admin'))
 				if (!this.$store.state.admin.userid) {
 					uni.showToast({
 						title: "请先登录"

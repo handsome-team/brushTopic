@@ -7,15 +7,15 @@
 			</view>
 			<view class="mean-li">
 				<text class="mean-left">昵称</text>
-				<text class="mean-right">{{ruleForm.nickname=''?'无':ruleForm.nickname}}</text>
+				<text class="mean-right">{{$store.state.admin.nickname=''?'无':$store.state.admin.nickname}}</text>
 			</view>
 			<view class="mean-li">
 				<text class="mean-left">个人签名</text>
-				<text class="mean-right">{{ruleForm.signature = ''?'无':ruleForm.signature}}</text>
+				<text class="mean-right">{{$store.state.admin.signature = ''?'无':$store.state.admin.signature}}</text>
 			</view>
 			<view class="mean-li">
 				<text class="mean-left">性别</text>
-				<text class="mean-right">{{ruleForm.sex = ''?'无':ruleForm.sex}}</text>
+				<text class="mean-right">{{$store.state.admin.sex = ''?'无':$store.state.admin.sex}}</text>
 			</view>
 			<view class="mean-li">
 				<text class="mean-left">收藏题数</text>
@@ -25,7 +25,6 @@
 		<view class="btn-box">
 			<text @click="modify">编辑资料</text>
 		</view>
-	</view>
 	</view>
 </template>
 
@@ -40,14 +39,12 @@
 				datalist: []
 			}
 		},
-		onLoad() {
-			const admin = JSON.parse(uni.getStorageSync('admin'))
+		onShow() {
+			const admin = this.$store.state.admin
 			if (admin != '') {
 				this.ruleForm = admin
 				this.datalist = this.ruleForm.sign
 			}
-
-			console.log(this.ruleForm.sign.length)
 		},
 		methods: {
 			back() {
@@ -98,10 +95,6 @@
 								_this.$store.commit("xiuherad", {
 									portrait: mydata,
 								})
-								// uni.setStorage({
-								// 	key:'admin',
-								// 	data:JSON.stringify(admin)
-								// })
 								if (statusCode == 200) {
 									uni.showToast({
 										title: JSON.parse(data).msg,

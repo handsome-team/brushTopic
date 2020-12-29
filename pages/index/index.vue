@@ -189,13 +189,11 @@
 			margin: 20px 0px 0px 15px;
 
 			.searchBox {
-				width: 65vw;
+				width: 67vw;
 				height: 35px;
 				border: 1px solid #fe5407;
 				border-radius: 25px;
 				float: left;
-				margin-left: 10px;
-
 				.searchImg {
 					width: 6%;
 					height: 45%;

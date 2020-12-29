@@ -28,6 +28,10 @@ export default new Vuex.Store({
 			}
 			state.admin = hunarr;
 			uni.setStorageSync("admin", JSON.stringify(hunarr))
+		},
+		xiumsg(state, data) {
+			state.admin = data.admin;
+			uni.setStorageSync("admin", JSON.stringify(state.admin))
 		}
 	},
 	actions: {
@@ -48,7 +52,6 @@ export default new Vuex.Store({
 							token
 						} = data.data
 						data.data.sign = JSON.parse(data.data.sign);
-						// console.log(data.data)
 						uni.setStorage({
 							key: "admin",
 							data: JSON.stringify(data.data)

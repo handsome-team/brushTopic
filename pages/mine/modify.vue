@@ -73,7 +73,9 @@
 								newAdmin.nickname = this.ruleForm.username
 								newAdmin.sex = this.ruleForm.sex
 								newAdmin.signature = this.ruleForm.signature
-								uni.setStorageSync('admin',JSON.stringify(newAdmin))
+								_this.$store.commit("xiumsg", {
+									admin: newAdmin,
+								})
 								uni.showToast({
 									title:'修改成功'
 								})
