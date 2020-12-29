@@ -7,7 +7,7 @@
 					<image src="../../static/mine/icon.jpg" mode=""></image>
 				</view>
 				<view class="label-box">
-					<input type="text" value="" placeholder="请输入账号" v-model="username" @input=""/>
+					<input type="text" value="" placeholder="请输入账号" v-model="username" />
 					<input type="password" value="" placeholder="请输入密码" v-model="password"/>
 				</view>
 			</view>
@@ -20,7 +20,7 @@
 			</view>
 		</view>
 		<!-- 注册页面 -->
-		<view v-else="isShow" class="register-box">
+		<view v-else class="register-box">
 			<view class="input-box">
 				<view class="image-box">
 					<image src="../../static/mine/sheep.jpg" mode=""></image>

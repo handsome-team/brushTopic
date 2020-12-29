@@ -578,7 +578,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n*[data-v-2be84a3c] {\n  margin: 0;\n  padding: 0;\n}\n.homeContaienr[data-v-2be84a3c] {\n  overflow: hidden;\n}\n.homeContaienr .searchBoxCon[data-v-2be84a3c] {\n  width: 100vw;\n  height: 60px;\n  margin: 20px 0px 0px 15px;\n}\n.homeContaienr .searchBoxCon .searchBox[data-v-2be84a3c] {\n  width: 65vw;\n  height: 35px;\n  border: 1px solid #fe5407;\n  -webkit-border-radius: 25px;\n          border-radius: 25px;\n  float: left;\n  margin-left: 10px;\n}\n.homeContaienr .searchBoxCon .searchBox .searchImg[data-v-2be84a3c] {\n  width: 6%;\n  height: 45%;\n  margin: 5px 17px;\n  float: left;\n}\n.homeContaienr .searchBoxCon .searchBox .searchImg uni-image[data-v-2be84a3c] {\n  width: 100%;\n  height: 100%;\n}\n.homeContaienr .searchBoxCon .searchBox .inp[data-v-2be84a3c] {\n  width: 60%;\n  height: 60%;\n  padding: 6px 5px;\n  float: left;\n}\n.homeContaienr .searchBoxCon .searchbtn[data-v-2be84a3c] {\n  padding: 10px;\n  width: 50px;\n  height: 18px;\n  font-size: 15px;\n  background: #fe5407;\n  float: left;\n  -webkit-border-radius: 25px;\n          border-radius: 25px;\n  margin-left: 20px;\n}\n.homeContaienr .searchBoxCon .searchbtn uni-text[data-v-2be84a3c] {\n  display: block;\n  text-align: center;\n  color: #ffffff;\n  line-height: 18px;\n}\n.homeContaienr .swiperBox[data-v-2be84a3c] {\n  width: 95%;\n  margin: auto;\n}\n.homeContaienr .swiperBox .swiperImg uni-image[data-v-2be84a3c] {\n  width: 100vw;\n  height: 150px;\n}\n.homeContaienr .title[data-v-2be84a3c] {\n  margin: 5px 12px;\n  font-weight: 600;\n  font-size: 15px;\n}\n.homeContaienr .officialQuestion[data-v-2be84a3c] {\n  width: 100%;\n  height: 30vh;\n  margin: 0px auto;\n  margin-top: 13px;\n}\n.homeContaienr .officialQuestion .iconsBox[data-v-2be84a3c] {\n  width: 100%;\n  height: 80%;\n  text-align: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-flow: wrap;\n          flex-flow: wrap;\n}\n.homeContaienr .officialQuestion .iconsBox .icons[data-v-2be84a3c] {\n  width: 27%;\n  height: 40%;\n  margin: 10px 0px 0px 20px;\n}\n.homeContaienr .officialQuestion .iconsBox .icons uni-text[data-v-2be84a3c] {\n  text-align: center;\n  font-size: 13px;\n}\n.homeContaienr .officialQuestion .iconsBox .icons uni-image[data-v-2be84a3c] {\n  margin: 10px auto;\n  width: 32%;\n  height: 44%;\n  display: block;\n}\n.homeContaienr .hotFunction[data-v-2be84a3c] {\n  width: 100%;\n  height: 18vh;\n}\n.homeContaienr .hotFunction .hotImg[data-v-2be84a3c] {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  width: 100%;\n  height: 100%;\n}\n.homeContaienr .hotFunction .hotImg uni-image[data-v-2be84a3c] {\n  width: 44%;\n  height: 80%;\n  margin: 10px 0px 0px 15px;\n}\n.homeContaienr .hotNews[data-v-2be84a3c] {\n  width: 100%;\n  margin-top: 20px;\n}\n.homeContaienr .hotNews .addmore[data-v-2be84a3c] {\n  width: 80%;\n  margin: 20px auto;\n  font-size: 14px;\n}\n.homeContaienr .hotNews .addmore p[data-v-2be84a3c] {\n  text-align: center;\n}\n.homeContaienr .hotNews .newsbox[data-v-2be84a3c] {\n  width: 90%;\n  height: 100%;\n  padding: 10px;\n  margin: 10px auto;\n  background: #f8f8f8;\n  -webkit-border-radius: 5px;\n          border-radius: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n}\n.homeContaienr .hotNews .newsbox .rightbox[data-v-2be84a3c] {\n  width: 100%;\n  margin-left: 20px;\n  font-size: 12px;\n}\n.homeContaienr .hotNews .newsbox .rightbox .sort[data-v-2be84a3c] {\n  float: left;\n}\n.homeContaienr .hotNews .newsbox .rightbox h2[data-v-2be84a3c] {\n  font-size: 12px;\n}\n.homeContaienr .hotNews .newsbox .rightbox .summary[data-v-2be84a3c] {\n  padding: 10px 2px;\n  display: block;\n}\n.homeContaienr .hotNews .newsbox uni-image[data-v-2be84a3c] {\n  width: 135px;\n  height: 100px;\n  padding-top: 6px;\n  display: block;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n*[data-v-2be84a3c] {\n  margin: 0;\n  padding: 0;\n}\n.homeContaienr[data-v-2be84a3c] {\n  overflow: hidden;\n}\n.homeContaienr .searchBoxCon[data-v-2be84a3c] {\n  width: 100vw;\n  height: 60px;\n  margin: 20px 0px 0px 15px;\n}\n.homeContaienr .searchBoxCon .searchBox[data-v-2be84a3c] {\n  width: 67vw;\n  height: 35px;\n  border: 1px solid #fe5407;\n  -webkit-border-radius: 25px;\n          border-radius: 25px;\n  float: left;\n}\n.homeContaienr .searchBoxCon .searchBox .searchImg[data-v-2be84a3c] {\n  width: 6%;\n  height: 45%;\n  margin: 5px 17px;\n  float: left;\n}\n.homeContaienr .searchBoxCon .searchBox .searchImg uni-image[data-v-2be84a3c] {\n  width: 100%;\n  height: 100%;\n}\n.homeContaienr .searchBoxCon .searchBox .inp[data-v-2be84a3c] {\n  width: 60%;\n  height: 60%;\n  padding: 6px 5px;\n  float: left;\n}\n.homeContaienr .searchBoxCon .searchbtn[data-v-2be84a3c] {\n  padding: 10px;\n  width: 50px;\n  height: 18px;\n  font-size: 15px;\n  background: #fe5407;\n  float: left;\n  -webkit-border-radius: 25px;\n          border-radius: 25px;\n  margin-left: 20px;\n}\n.homeContaienr .searchBoxCon .searchbtn uni-text[data-v-2be84a3c] {\n  display: block;\n  text-align: center;\n  color: #ffffff;\n  line-height: 18px;\n}\n.homeContaienr .swiperBox[data-v-2be84a3c] {\n  width: 95%;\n  margin: auto;\n}\n.homeContaienr .swiperBox .swiperImg uni-image[data-v-2be84a3c] {\n  width: 100vw;\n  height: 150px;\n}\n.homeContaienr .title[data-v-2be84a3c] {\n  margin: 5px 12px;\n  font-weight: 600;\n  font-size: 15px;\n}\n.homeContaienr .officialQuestion[data-v-2be84a3c] {\n  width: 100%;\n  height: 30vh;\n  margin: 0px auto;\n  margin-top: 13px;\n}\n.homeContaienr .officialQuestion .iconsBox[data-v-2be84a3c] {\n  width: 100%;\n  height: 80%;\n  text-align: center;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-flow: wrap;\n          flex-flow: wrap;\n}\n.homeContaienr .officialQuestion .iconsBox .icons[data-v-2be84a3c] {\n  width: 27%;\n  height: 40%;\n  margin: 10px 0px 0px 20px;\n}\n.homeContaienr .officialQuestion .iconsBox .icons uni-text[data-v-2be84a3c] {\n  text-align: center;\n  font-size: 13px;\n}\n.homeContaienr .officialQuestion .iconsBox .icons uni-image[data-v-2be84a3c] {\n  margin: 10px auto;\n  width: 32%;\n  height: 44%;\n  display: block;\n}\n.homeContaienr .hotFunction[data-v-2be84a3c] {\n  width: 100%;\n  height: 18vh;\n}\n.homeContaienr .hotFunction .hotImg[data-v-2be84a3c] {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  width: 100%;\n  height: 100%;\n}\n.homeContaienr .hotFunction .hotImg uni-image[data-v-2be84a3c] {\n  width: 44%;\n  height: 80%;\n  margin: 10px 0px 0px 15px;\n}\n.homeContaienr .hotNews[data-v-2be84a3c] {\n  width: 100%;\n  margin-top: 20px;\n}\n.homeContaienr .hotNews .addmore[data-v-2be84a3c] {\n  width: 80%;\n  margin: 20px auto;\n  font-size: 14px;\n}\n.homeContaienr .hotNews .addmore p[data-v-2be84a3c] {\n  text-align: center;\n}\n.homeContaienr .hotNews .newsbox[data-v-2be84a3c] {\n  width: 90%;\n  height: 100%;\n  padding: 10px;\n  margin: 10px auto;\n  background: #f8f8f8;\n  -webkit-border-radius: 5px;\n          border-radius: 5px;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-box-pack: justify;\n  -webkit-justify-content: space-between;\n          justify-content: space-between;\n}\n.homeContaienr .hotNews .newsbox .rightbox[data-v-2be84a3c] {\n  width: 100%;\n  margin-left: 20px;\n  font-size: 12px;\n}\n.homeContaienr .hotNews .newsbox .rightbox .sort[data-v-2be84a3c] {\n  float: left;\n}\n.homeContaienr .hotNews .newsbox .rightbox h2[data-v-2be84a3c] {\n  font-size: 12px;\n}\n.homeContaienr .hotNews .newsbox .rightbox .summary[data-v-2be84a3c] {\n  padding: 10px 2px;\n  display: block;\n}\n.homeContaienr .hotNews .newsbox uni-image[data-v-2be84a3c] {\n  width: 135px;\n  height: 100px;\n  padding-top: 6px;\n  display: block;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1832,7 +1832,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(1, "sc"),
-          staticStyle: { "background-color": "pink" },
           attrs: { _i: 1 },
           on: {
             click: function($event) {
@@ -1852,7 +1851,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(4, "sc"),
-          staticStyle: { "background-color": "yellow" },
           attrs: { _i: 4 },
           on: {
             click: function($event) {
@@ -1872,7 +1870,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(7, "sc"),
-          staticStyle: { "background-color": "orange" },
           attrs: { _i: 7 },
           on: {
             click: function($event) {
@@ -1892,7 +1889,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(10, "sc"),
-          staticStyle: { "background-color": "royalblue" },
           attrs: { _i: 10 },
           on: {
             click: function($event) {
@@ -1912,7 +1908,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(13, "sc"),
-          staticStyle: { "background-color": "#B2A6E5" },
           attrs: { _i: 13 },
           on: {
             click: function($event) {
@@ -1932,7 +1927,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(16, "sc"),
-          staticStyle: { "background-color": "#BCE771" },
           attrs: { _i: 16 },
           on: {
             click: function($event) {
@@ -1952,7 +1946,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(19, "sc"),
-          staticStyle: { "background-color": "#31E0F5" },
           attrs: { _i: 19 },
           on: {
             click: function($event) {
@@ -1972,7 +1965,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(22, "sc"),
-          staticStyle: { "background-color": "#D2DCE2" },
           attrs: { _i: 22 },
           on: {
             click: function($event) {
@@ -1992,7 +1984,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(25, "sc"),
-          staticStyle: { "background-color": "#35DCA4" },
           attrs: { _i: 25 },
           on: {
             click: function($event) {
@@ -2012,7 +2003,6 @@ var render = function() {
         "v-uni-view",
         {
           staticClass: _vm._$g(28, "sc"),
-          staticStyle: { "background-color": "#35DCA4" },
           attrs: { _i: 28 },
           on: {
             click: function($event) {
@@ -2024,7 +2014,26 @@ var render = function() {
           _c("v-uni-image", {
             attrs: { src: "/static/practice/webpack%20.png", _i: 29 }
           }),
-          _c("v-uni-view", { attrs: { _i: 30 } }, [_vm._v("web")])
+          _c("v-uni-view", { attrs: { _i: 30 } }, [_vm._v("webpack")])
+        ],
+        1
+      ),
+      _c(
+        "v-uni-view",
+        {
+          staticClass: _vm._$g(31, "sc"),
+          attrs: { _i: 31 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [
+          _c("v-uni-image", {
+            attrs: { src: "/static/practice/016.png", _i: 32 }
+          }),
+          _c("v-uni-view", { attrs: { _i: 33 } }, [_vm._v("all")])
         ],
         1
       )
@@ -2120,7 +2129,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n.sortBox[data-v-7bb29b87] {\n  width: 100%;\n  height: 100vh;\n}\n.sortBox .sortItem[data-v-7bb29b87] {\n  width: 40%;\n  height: 8vh;\n  float: left;\n  margin: 20px 0px 10px 25px;\n  -webkit-border-radius: 5px;\n          border-radius: 5px;\n}\n.sortBox .sortItem uni-image[data-v-7bb29b87] {\n  width: 23%;\n  height: 58%;\n  float: left;\n  margin: 8% 0 0% 15%;\n}\n.sortBox .sortItem uni-view[data-v-7bb29b87] {\n  font-size: 14px;\n  height: 8vh;\n  line-height: 8vh;\n  float: left;\n  margin-left: 13%;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n.sortBox[data-v-7bb29b87] {\n  width: 100%;\n  height: 100vh;\n}\n.sortBox .sortItem[data-v-7bb29b87] {\n  width: 40%;\n  height: 8vh;\n  float: left;\n  margin: 20px 0px 10px 25px;\n  -webkit-border-radius: 5px;\n          border-radius: 5px;\n  -webkit-box-shadow: 0px 4px 20px -6px #C0C0C0;\n          box-shadow: 0px 4px 20px -6px #C0C0C0;\n}\n.sortBox .sortItem uni-image[data-v-7bb29b87] {\n  width: 23%;\n  height: 58%;\n  float: left;\n  margin: 8% 0 0% 15%;\n}\n.sortBox .sortItem uni-view[data-v-7bb29b87] {\n  font-size: 14px;\n  height: 8vh;\n  line-height: 8vh;\n  float: left;\n  margin-left: 8%;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2803,14 +2812,11 @@ var render = function() {
                           placeholder: "请输入账号",
                           _i: 6
                         },
-                        on: {
-                          input: function($event) {
-                            return _vm.$handleViewEvent($event)
-                          }
-                        },
                         model: {
                           value: _vm._$g(6, "v-model"),
-                          callback: function() {},
+                          callback: function($$v) {
+                            _vm.$handleVModelEvent(6, $$v)
+                          },
                           expression: "username"
                         }
                       }),
@@ -5845,19 +5851,21 @@ var render = function() {
         "v-uni-view",
         { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
         [
-          _c("h2", { attrs: { _i: 2 } }, [
+          _c("v-uni-view", { attrs: { _i: 2 } }, [
             _vm._v("您本次的考试成绩:" + _vm._$g(2, "t0-0"))
+          ]),
+          _c("v-uni-view", { attrs: { _i: 3 } }, [
+            _vm._v("回答正确数:" + _vm._$g(3, "t0-0"))
+          ]),
+          _c("v-uni-view", { attrs: { _i: 4 } }, [
+            _vm._v("回答错误数:" + _vm._$g(4, "t0-0"))
+          ]),
+          _c("v-uni-view", { attrs: { _i: 5 } }, [
+            _vm._v("未答个数:" + _vm._$g(5, "t0-0"))
           ])
         ],
         1
-      ),
-      _c("h2", { attrs: { _i: 3 } }, [
-        _vm._v("回答正确数:" + _vm._$g(3, "t0-0"))
-      ]),
-      _c("h2", { attrs: { _i: 4 } }, [
-        _vm._v("回答错误数:" + _vm._$g(4, "t0-0"))
-      ]),
-      _c("h2", { attrs: { _i: 5 } }, [_vm._v("未答个数:" + _vm._$g(5, "t0-0"))])
+      )
     ],
     1
   )
@@ -5950,7 +5958,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n.answerResult[data-v-2132c2d6] {\n  width: 100vw;\n  height: 100vh;\n}\n.answerResult .answer[data-v-2132c2d6] {\n  width: 100%;\n  height: 10%;\n}\n.answerResult .answer h2[data-v-2132c2d6] {\n  line-height: 80px;\n  text-align: center;\n}\n.answerResult h2[data-v-2132c2d6] {\n  line-height: 80px;\n  text-align: center;\n}\n.answerResult h2[data-v-2132c2d6] {\n  line-height: 80px;\n  text-align: center;\n}\n.answerResult h2[data-v-2132c2d6] {\n  line-height: 80px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * 这里是uni-app内置的常用样式变量\n *\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\n *\n */\n/**\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\n *\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\n */\n/* 颜色变量 */\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n.answerResult[data-v-2132c2d6] {\n  width: 100vw;\n  height: 100vh;\n}\n.answerResult .answer[data-v-2132c2d6] {\n  width: 100%;\n  height: 10%;\n}\n.answerResult .answer uni-view[data-v-2132c2d6] {\n  line-height: 80px;\n  text-align: center;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
