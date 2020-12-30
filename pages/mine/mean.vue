@@ -17,10 +17,6 @@
 				<text class="mean-left">性别</text>
 				<text class="mean-right">{{$store.state.admin.sex = ''?'无':$store.state.admin.sex}}</text>
 			</view>
-			<view class="mean-li">
-				<text class="mean-left">收藏题数</text>
-				<text class="mean-right">{{datalist.length}}</text>
-			</view>
 		</view>
 		<view class="btn-box">
 			<text @click="modify">编辑资料</text>
@@ -43,7 +39,7 @@
 			const admin = this.$store.state.admin
 			if (admin != '') {
 				this.ruleForm = admin
-				this.datalist = this.ruleForm.sign
+				this.datalist = this.$store.state.admin.sign
 			}
 		},
 		methods: {

@@ -4,11 +4,11 @@
 		<view v-if='isShow' class="login-box">
 			<view class="input-box">
 				<view class="image-box">
-					<image src="../../static/mine/icon.jpg" mode=""></image>
+					<image src="../../static/mine/sheep.jpg" mode=""></image>
 				</view>
 				<view class="label-box">
 					<input type="text" value="" placeholder="请输入账号" v-model="username" />
-					<input type="password" value="" placeholder="请输入密码" v-model="password"/>
+					<input type="password" value="" placeholder="请输入密码" v-model="password" />
 				</view>
 			</view>
 			<view class="btn-box">
@@ -16,7 +16,7 @@
 				<text @click="toisShow">还没有账号？去注册</text>
 			</view>
 			<view class="bottom-box">
-					<text>登录即代表<text class="blue">《用户登录协议》</text>和<text class="blue">《隐私政策》</text></text>
+				<text>登录即代表<text class="blue">《用户登录协议》</text>和<text class="blue">《隐私政策》</text></text>
 			</view>
 		</view>
 		<!-- 注册页面 -->
@@ -26,11 +26,11 @@
 					<image src="../../static/mine/sheep.jpg" mode=""></image>
 				</view>
 				<view class="label-box">
-					<input type="text" value="" placeholder="请输入账号" v-model="username"/>
-					<input type="password" value="" placeholder="请输入密码" v-model="password"/>
-					<input type="password" value="" placeholder="请确认密码" v-model="confirmPassword"/>
+					<input type="text" value="" placeholder="请输入账号" v-model="username" />
+					<input type="password" value="" placeholder="请输入密码" v-model="password" />
+					<input type="password" value="" placeholder="请确认密码" v-model="confirmPassword" />
 					<view class="code-box">
-						<input type="text" value="" placeholder="输入验证码" v-model="code"/>
+						<input type="text" value="" placeholder="输入验证码" v-model="code" />
 						<text @click="sendCode">发送验证码</text>
 					</view>
 				</view>
@@ -47,148 +47,161 @@
 </template>
 
 <script>
-	import {baseURL} from '@/api/index.js'
-	import {mapMutations} from "vuex"
-	export default{
-		data(){
-			return{
-				isShow:true,
-				username:"",
-				password:"",
-				confirmPassword:"",
-				code:""
+	import {
+		baseURL
+	} from '@/api/index.js'
+	import {
+		mapMutations
+	} from "vuex"
+	export default {
+		data() {
+			return {
+				isShow: true,
+				username: "",
+				password: "",
+				confirmPassword: "",
+				code: ""
 			}
-			
+
 		},
-		methods:{
+		methods: {
 			// 切换isShow
-			toisShow(){
+			toisShow() {
 				this.username = '';
 				this.password = ''
 				this.confirmPassword = ''
 				this.isShow = !this.isShow;
 			},
 			//登录成功去首页
-			 tohome(){
-				 // 判断是否为空
-				 if(this.username == ''){
-				 	uni.showToast({
-				 		title:'用户名不能为空'
-				 	})
-				 }else if(this.password == ''){
-				 	uni.showToast({
-				 		title:'密码不能为空'
-				 	})
-				 }else{
-					 const obj = {username:this.username,password:this.password};
-					 this.$store.dispatch('loginStates',obj)
-				 }
-			 },
+			tohome() {
+				// 判断是否为空
+				if (this.username == '') {
+					uni.showToast({
+						title: '用户名不能为空'
+					})
+				} else if (this.password == '') {
+					uni.showToast({
+						title: '密码不能为空'
+					})
+				} else {
+					const obj = {
+						username: this.username,
+						password: this.password
+					};
+					this.$store.dispatch('loginStates', obj)
+				}
+			},
 
-			 // 发送验证码
-			 sendCode(){
+			// 发送验证码
+			sendCode() {
 				const _this = this
 				// 邮箱注册
 				const reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
 				// 手机号注册
 				// const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
 				// 判断是否为空
-				if(this.username == ''){
+				if (this.username == '') {
 					uni.showToast({
-						title:'用户名不能为空'
+						title: '用户名不能为空'
 					})
-				}else if(!reg.test(this.username)){ 
+				} else if (!reg.test(this.username)) {
 					uni.showToast({
-						title:"请输入正确的邮箱号"
+						title: "请输入正确的邮箱号"
 					})
-				}else if(this.password == ''){
+				} else if (this.password == '') {
 					uni.showToast({
-						title:'密码不能为空'
+						title: '密码不能为空'
 					})
-				}else if(this.password.length <6) {
+				} else if (this.password.length < 6) {
 					uni.showToast({
-						title:'密码不能小于六位'
+						title: '密码不能小于六位'
 					})
-				}else if(this.confirmPassword == '') {
+				} else if (this.confirmPassword == '') {
 					uni.showToast({
-						title:'请确认密码'
+						title: '请确认密码'
 					})
-				}else if(this.password != this.confirmPassword){
+				} else if (this.password != this.confirmPassword) {
 					uni.showToast({
-						title:'两次密码不一致'
+						title: '两次密码不一致'
 					})
-				}else{
+				} else {
 					uni.request({
-						url:`${baseURL}/users/getlma`,
-						method:"POST",
-						data:{username:this.username},
-						success(res){
-							if(res.data.code == 200){
+						url: `${baseURL}/users/getlma`,
+						method: "POST",
+						data: {
+							username: this.username
+						},
+						success(res) {
+							if (res.data.code == 200) {
 								uni.showToast({
-									title:res.data.msg
+									title: res.data.msg
 								})
-							}else{
+							} else {
 								uni.showToast({
-									title:'发送失败'
+									title: '发送失败'
 								})
 							}
 						}
-					})				 
+					})
 				}
-				
-			 },
-			 
+
+			},
+
 			// 注册成功去登录页
-			tologin(){
+			tologin() {
 				const _this = this
 				var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
 				// const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
 				// 判断是否为空
-				if(this.username == ''){
+				if (this.username == '') {
 					uni.showToast({
-						title:'用户名不能为空'
+						title: '用户名不能为空'
 					})
-				}else if(!reg.test(this.username)){ 
+				} else if (!reg.test(this.username)) {
 					uni.showToast({
-						title:"请输入正确的邮箱号"
+						title: "请输入正确的邮箱号"
 					})
-				}else if(this.password == ''){
+				} else if (this.password == '') {
 					uni.showToast({
-						title:'密码不能为空'
+						title: '密码不能为空'
 					})
-				}else if(this.code == '') {
+				} else if (this.code == '') {
 					uni.showToast({
-						title:'请输入验证码'
+						title: '请输入验证码'
 					})
-				}else if(this.password.length <6) {
+				} else if (this.password.length < 6) {
 					uni.showToast({
-						title:'密码不能小于六位'
+						title: '密码不能小于六位'
 					})
-				}else if(this.confirmPassword == '') {
+				} else if (this.confirmPassword == '') {
 					uni.showToast({
-						title:'请确认密码'
+						title: '请确认密码'
 					})
-				}else if(this.password != this.confirmPassword){
+				} else if (this.password != this.confirmPassword) {
 					uni.showToast({
-						title:'两次密码不一致'
+						title: '两次密码不一致'
 					})
-				}else{
+				} else {
 					uni.request({
-						url:`${baseURL}/users/register`,
-						method:'POST',
-						data:{username:this.username,password:this.password,code:this.code},
-						success(data){
+						url: `${baseURL}/users/register`,
+						method: 'POST',
+						data: {
+							username: this.username,
+							password: this.password,
+							code: this.code
+						},
+						success(data) {
 							console.log(data)
-							if(data.data.code == 200){
+							if (data.data.code == 200) {
 								uni.showToast({
-									title:data.data.message
+									title: data.data.message
 								})
 								_this.isShow = !_this.isShow
 								_this.password = '';
 								_this.username = ''
-							}else{
+							} else {
 								uni.showToast({
-									title:'注册失败'
+									title: '注册失败'
 								})
 							}
 						}
@@ -196,39 +209,57 @@
 				}
 			}
 		},
-		
+
 	}
 </script>
 
 <style scoped lang="scss">
-	.content-box{
+	.content-box {
 		width: 100%;
-		height:100vh;
-		.input-box{
+		height: 100vh;
+		background-image: url('/static/bg.jpg');
+		background-size: 100%;
+		overflow: hidden;
+
+		.login-box {
+			width: 90%;
+			height: 430px;
+			margin: 80px auto;
+			border-radius: 8px;
+			// background-color: rgba(255, 254, 255, 0.9);
+			box-shadow: 0px 4px 20px -6px #C0C0C0;
+		}
+
+		.input-box {
 			width: 85%;
-			margin: 5vh auto;
-			.image-box{
+			margin: 0vh auto;
+			overflow: hidden;
+			.image-box {
 				width: 32%;
 				height: 13vh;
 				overflow: hidden;
 				border-radius: 50%;
 				margin: 0 auto;
-				border:0.2px solid #e6e6e6;
-				image{
+				border: 0.2px solid #e6e6e6;
+				margin-top: 6px;
+				image {
 					width: 100%;
 					height: 100%;
 				}
 			}
-			.label-box{
-				.code-box{
+
+			.label-box {
+				.code-box {
 					width: 100%;
 					height: 5vh;
-					input{
+
+					input {
 						width: 40%;
 						float: left;
-						margin-left:10% ;
+						margin-left: 6%;
 					}
-					text{
+
+					text {
 						float: right;
 						margin-top: 7%;
 						font-size: 14px;
@@ -242,21 +273,25 @@
 						background: #FE5407;
 					}
 				}
-				code-box>input,input{
-					width: 80%;
-					text-align: center;
-					height: 6vh;
-					margin: 5% auto;
-					border:1px solid #FE5407;
-					border-radius: 25px;
+
+				code-box>input,
+				input {
+					    width: 90%;
+					    text-align: center;
+					    height: 5vh;
+					    margin: 5% auto;
+					    border: 1px solid #FE5407;
+					    border-radius: 25px;
 				}
 			}
 		}
-		.btn-box{
+
+		.btn-box {
 			width: 100%;
 			height: 5vh;
 			text-align: center;
-			text{
+
+			text {
 				font-size: 14px;
 				display: inline-block;
 				width: 70%;
@@ -271,7 +306,8 @@
 			}
 		}
 	}
-	.bottom-box{
+
+	.bottom-box {
 		width: 80%;
 		margin: 0 auto;
 		position: absolute;
@@ -279,8 +315,16 @@
 		font-size: 12px;
 		left: 10%;
 		text-align: center;
-		.blue{
+
+		.blue {
 			color: blue;
 		}
+	}
+	.register-box{
+		width: 90%;
+		height: 560px;
+		margin: 80px auto;
+		border-radius: 8px;
+		box-shadow: 0px 4px 20px -6px #C0C0C0;
 	}
 </style>

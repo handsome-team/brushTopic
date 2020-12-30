@@ -3,7 +3,7 @@
 		
 			<view class="mean-list">
 				<view class="mean-li">
-					<input type="text" v-model="ruleForm.username" placeholder="请输入昵称" />
+					<input type="text" v-model="ruleForm.username" placeholder="请输入昵称" > 
 				</view>
 				<view class="mean-li">
 					<input type="text" v-model="ruleForm.sex" placeholder="请输入性别" />
@@ -45,7 +45,7 @@
 					this.ruleForm = ''
 				}else if(this.ruleForm.username == ''){
 					uni.showToast({
-						title:"昵称不能为空"
+						title:"昵称不能为空" 
 					})
 				}else if(this.ruleForm.signature == ''){
 					uni.showToast({
@@ -100,15 +100,20 @@
 		font-size: 14px;
 		width: 100%;
 		height: 100vh;
+		overflow: hidden;
+		/* background-image: url(../../static/bj.jpg); */
 		.mean-list{
 			width: 80%;
 			margin: 8vh auto;
+			box-shadow: 0px 4px 20px -6px #C0C0C0;
+			height: 300px;
+			overflow: hidden;
 			.mean-li{
 				width: 100%;
 				height: 10vh;
 				input{
 					text-align: center;
-					margin: 2% auto;
+					margin: 6% auto;
 					width: 80%;
 					height: 60%;
 					border-radius: 20px;

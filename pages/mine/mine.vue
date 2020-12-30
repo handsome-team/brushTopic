@@ -2,7 +2,7 @@
 	<view class="mine-box">
 		<view class="mine-mean">
 			<view class="image-box">
-				<image :src="$store.state.admin.portrait? $store.state.admin.portrait :'../../static/mine/icon.jpg'" mode="" />
+				<image :src="$store.state.admin.portrait? $store.state.admin.portrait :'../../static/mine/sheep.jpg'" mode="" />
 			</view>
 			<view class="font-box">
 				<text style="font-size: 16px;">{{$store.state.admin.nickname?$store.state.admin.nickname:'未登录'}}</text>
