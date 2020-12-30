@@ -41,7 +41,12 @@ export default {
 	font-size: 14px;
 	width: 100%;
 	height: 100vh;
+	overflow: hidden;
 	.exam-explain {
+		width: 90%;
+		height: 300px;
+		margin: 0 auto;
+		box-shadow: 0px 4px 20px -6px #C0C0C0;
 		box-sizing: border-box;
 		padding: 15px;
 		view {
