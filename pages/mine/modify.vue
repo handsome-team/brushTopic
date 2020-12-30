@@ -1,6 +1,5 @@
 <template>
 	<view class="modify-box">
-		
 			<view class="mean-list">
 				<view class="mean-li">
 					<input type="text" v-model="ruleForm.username" placeholder="请输入昵称" />

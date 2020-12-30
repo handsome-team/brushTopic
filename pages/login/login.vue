@@ -222,22 +222,23 @@
 			.label-box{
 				.code-box{
 					width: 100%;
-					height: 5vh;
+					height: 6vh;
 					input{
 						width: 40%;
 						float: left;
 						margin-left:10% ;
 					}
 					text{
+						height: 6vh;
 						float: right;
-						margin-top: 7%;
+						margin-top: 5%;
 						font-size: 14px;
 						width: 30%;
 						margin-right: 10%;
 						display: block;
 						text-align: center;
 						border-radius: 20px;
-						line-height: 5vh;
+						line-height: 6vh;
 						color: white;
 						background: #FE5407;
 					}
